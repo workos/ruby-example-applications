@@ -1,0 +1,28 @@
+<% if @users.any? %>
+  <h2>Users</h2>
+
+  <ul>
+    <% @users.each do |user| %>
+      <li>
+        <a href="/users/<%= user['id'] %>">
+          <%= user['username'] %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<% if @groups.any? %>
+  <h2>Groups</h2>
+
+  <ul>
+    <% @groups.each do |group| %>
+      <li>
+        <a href="/groups/<%= group['id'] %>">
+          <%= group['name'] %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

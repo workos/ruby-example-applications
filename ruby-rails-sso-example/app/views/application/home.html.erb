@@ -1,0 +1,13 @@
+<section class="text-center m-5">
+    <h1 class="text-center" >Welcome To the WorkOS Rails SSO Example App</h1>
+    <p>Rails 6 app using WorkOS for Authentication</p>
+    <% if current_user %>
+      <pre><%= JSON.pretty_generate(current_user.attributes) %></pre>
+    <%end%>
+    <%=
+        link_to_if(current_user.nil?, "Login", sign_in_path, class: 'btn btn-primary m-5') do
+            link_to('Sign out',  destroy_user_session_path, :method => 'delete', class: 'btn btn-danger m-5')
+        end
+    %>
+
+</section>

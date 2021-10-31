@@ -1,0 +1,47 @@
+<h2 class="text-center m-5">User Sign In</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h4>Username and Password</h4>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-group">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="form-group">
+            <%= f.check_box :remember_me, class: 'm-2' %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
+
+        <div class="actions">
+          <%= f.submit "Log in", class: 'btn btn-primary m-2' %>
+        </div>
+      <% end %>
+      <hr>
+      <%= render "users/shared/links" %>
+    </div>
+    <div class="col-md-6">
+      <h4> Sign in with SSO </h4>
+
+      <%= form_with url: sso_new_path, method: :get, local: true do |f| %>
+        <div class="form-group">
+          <%= f.label :domain %><br />
+          <%= f.text_field :domain, autofocus: true, autocomplete: "domain", class: 'form-control' %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Sign in with SSO", class: 'btn btn-primary m-2' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<% if @current_user %>
+  <p>The current user's profile is</p>
+  <pre><%= @current_user %></pre>
+  <a class='button' href='/logout'>Sign Out</a>
+<% else %>
+  <a class='button' href='/auth'>Sign In</a>
+<% end %>

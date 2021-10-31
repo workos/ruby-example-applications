@@ -1,0 +1,20 @@
+<% if @user %>
+  <h2>User</h2>
+
+  <pre><%= JSON.pretty_generate(@user) %></pre>
+<% end %>
+
+
+<% if @user_groups.any? %>
+  <h2>User Groups</h2>
+
+  <ul>
+    <% @user_groups.each do |group| %>
+      <li>
+        <a href="/groups/<%= group['id'] %>">
+          <%= group['name'] %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

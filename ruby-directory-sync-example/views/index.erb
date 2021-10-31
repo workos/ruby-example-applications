@@ -1,0 +1,11 @@
+<% if @directories.any? %>
+  <ul>
+    <% @directories.each do |directory| %>
+      <li>
+        <a href="/directories/<%= directory['id'] %>">
+          <%= directory['name'] %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

@@ -1,0 +1,13 @@
+<h2>Ruby Example App for WorkOS Magic Link</h2>
+
+<% if @current_user %>
+  <p>The current user's profile is</p>
+  <pre><%= @current_user %></pre>
+  <a class='button' href='/logout'>Sign Out</a>
+<% else %>
+  <p>Send a Magic Link to your Email:</p>
+  <form method="POST" action="/passwordless-auth">
+    <p>Email: <input type="text" name="email"></p>
+    <input type="submit">
+  </form>
+<% end %>
