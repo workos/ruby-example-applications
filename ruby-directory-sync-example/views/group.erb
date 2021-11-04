@@ -11,8 +11,8 @@
   <ul>
     <% @group_users.each do |user| %>
       <li>
-        <a href="/users/<%= user['id'] %>">
-          <%= user['username'] %>
+        <a href="/users/<%= user.id %>">
+          <%= user.username %>
         </a>
       </li>
     <% end %>
