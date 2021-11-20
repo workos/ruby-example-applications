@@ -7,7 +7,7 @@ The application is built with Rails 6 and Bootstrap with Webpack, and also uses 
 
 ### Requirements
 
-- Ruby 2.6
+- Ruby 2.6.8
 - Rails 6
 - Foreman gem
 
