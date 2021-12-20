@@ -11,7 +11,7 @@ WorkOS.key = ENV['WORKOS_API_KEY']
 # Input your connection ID from your WorkOS dashboard
 # Configure your Redirect URIs on the dashboard
 # configuration page.
-CONNECTION_ID = 'conn_01FNYP9FHYPEYN268C3D0RJJ7Z'
+CONNECTION_ID = 'conn_01FQ4M53Z6YK034FCN1FV74GTA'
 REDIRECT_URI = 'http://localhost:4567/callback'
 
 use(
@@ -26,7 +26,6 @@ use(
 get '/' do
   @current_user = session[:user] && JSON.pretty_generate(session[:user])
   @first_name = session[:first_name]
-  print(@first_name)
   erb :index, :layout => :layout
 end
 

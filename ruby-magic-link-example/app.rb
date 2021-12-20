@@ -23,7 +23,8 @@ use(
 
 get '/' do
   @current_user = session[:user] && JSON.pretty_generate(session[:user])
-
+  @email = session[:email]
+  print(@email, 'email at /')
   erb :index, :layout => :layout
 end
 
@@ -49,7 +50,8 @@ get '/callback' do
   )
 
   session[:user] = profile_and_token.profile.to_json
-
+  session[:email] = profile_and_token.profile.email
+  
   redirect '/'
 end
 
