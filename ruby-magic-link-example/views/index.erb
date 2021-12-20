@@ -1,13 +1,59 @@
-<h2>Ruby Example App for WorkOS Magic Link</h2>
-
 <% if @current_user %>
-  <p>The current user's profile is</p>
-  <pre><%= @current_user %></pre>
-  <a class='button' href='/logout'>Sign Out</a>
+
+  <div class="logged_in_nav">
+  <div class="flex">
+      <p>You're logged in <%= @email %>, welcome!</p>
+  </div>
+  <div>
+      <img src="<%= url("/workos_logo_new.png")%>" alt="workos logo">
+  </div>
+</div>
+<div class='flex'>
+  <div class="logged_in_div_left">
+      <div>
+          <h1>Your app,</h1>
+          <h2>Enterprise Ready</h2>
+      </div>
+      <div>
+          <a href="https://workos.com/" target="_blank"><button class='button'>WorkOS</button></a>
+          <a href="https://workos.com/docs" target="_blank"><button class='button'>Documentation</button></a>
+          <a href="https://workos.com/docs/reference" target="_blank"><button class='button'>API Reference</button></a>
+          <a href="https://workos.com/blog" target="_blank"><button class='button'>Blog</button></a>
+          
+      </div>
+  </div>
+  <div class="logged_in_div_right">
+      <div class="flex_column">
+          <h2>Raw Profile Response Details</h2>
+          <div class="text_box">
+            <pre><%= @current_user %></pre>
+          </div>
+      </div>
+      <a class='button logout_button' href='/logout'>Sign Out</a>
+  </div>
+</div>
+
 <% else %>
-  <p>Send a Magic Link to your Email:</p>
-  <form method="POST" action="/passwordless-auth">
-    <p>Email: <input type="text" name="email"></p>
-    <input type="submit">
-  </form>
+  <div class="container_login">
+    <div class='flex_column'>
+    <div class="flex heading_div">
+        <img src="<%= url("/workos_logo_new.png")%>" alt="workos logo">
+        <div class="heading_text_div">
+            <h1>WorkOS</h1>
+        </div>
+    </div>
+
+    <h2>Ruby Magic Link Example App</h2>
+      <form method="POST" action="/passwordless-auth">
+        <div class='flex_column'>
+            <div>
+                <input type="text" id="email" name="email" class="text_input">
+            </div>
+            <div>
+                <button type="submit" class="button">Submit Email for Magic Link</button>
+            </div>
+        </div>
+      </form>
+    </div>
+</div>
 <% end %>
