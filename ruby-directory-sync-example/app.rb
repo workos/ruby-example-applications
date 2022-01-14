@@ -4,6 +4,10 @@ require 'dotenv/load'
 require 'sinatra'
 require 'workos'
 require 'json'
+require 'sinatra-websocket'
+
+set :server, 'thin'
+set :sockets, []
 
 # Pull API key from ENV variable
 WorkOS.key = ENV['WORKOS_API_KEY']
@@ -12,7 +16,7 @@ get '/' do
   @directories_list = WorkOS::DirectorySync.list_directories
   @directories = @directories_list.data
 
-  erb :index
+  erb :index, :layout => false
 end
 
 get '/directories/:id' do
@@ -39,3 +43,42 @@ get '/groups/:id' do
 
   erb :group
 end
+
+
+get '/webhooks' do
+  if !request.websocket?
+    erb :webhooks
+  else
+    request.websocket do |ws|
+      ws.onopen do
+        warn("websocket opened")
+        settings.sockets << ws
+      end
+      ws.onmessage do |msg|
+        warn("websocket onmessage")
+        EM.next_tick { settings.sockets.each{|s| s.send(msg) } }
+      end
+      ws.onclose do
+        warn("websocket closed")
+        settings.sockets.delete(ws)
+      end
+    end
+  end
+end
+
+post '/webhooks' do
+  payload = JSON.parse(request.body.read).to_json
+  sig_header = request.env['HTTP_WORKOS_SIGNATURE']
+  verified_webhook = WorkOS::Webhooks.construct_event(
+    payload: payload.to_s,
+    sig_header: sig_header,
+    secret: ENV['WORKOS_WEBHOOK_SECRET']
+  )
+  if verified_webhook
+    EM.next_tick { settings.sockets.each{|s| s.send(payload.to_s ) } }
+    redirect "/webhooks"
+  else
+    render :json => {:status => 400, :error => "Webhook failed"} and return
+  end
+end
+
