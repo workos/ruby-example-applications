@@ -6,13 +6,16 @@ class Users::SessionsController < Devise::SessionsController
   WorkOS.key = ENV['WORKOS_API_KEY']
   CLIENT_ID = ENV['WORKOS_CLIENT_ID']
 
+  # Set the Connection ID that you want to test
+  CONNECTION_ID = 'conn_123'
+
   # GET /sso/new path to authenticate via WorkOS
   # You can also use connection or provider parameters
   # in place of the domain parameter
   # https://workos.com/docs/reference/sso/authorize/get
   def auth
     authorization_url = WorkOS::SSO.authorization_url(
-      domain: params[:domain],
+      connection: CONNECTION_ID,
       client_id: CLIENT_ID,
       redirect_uri: ENV['WORKOS_REDIRECT_URI'],
     )
