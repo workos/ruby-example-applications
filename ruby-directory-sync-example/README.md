@@ -38,17 +38,17 @@ Head to `http://localhost:4567`!
 
 [Ngrok](https://ngrok.com/) is a simple application that allows you to map a local endpoint to a public endpoint.
 
-The application will run on http://localhost:8000. Ngrok will create a tunnel to the application so we can receive webhooks from WorkOS.
+The application will run on http://localhost:4567. Ngrok will create a tunnel to the application so we can receive webhooks from WorkOS.
 
 ```sh
-./ngrok http 8000
+./ngrok http 4567
 ```
 
 ### 3. Set Up a WorkOS Endpoint
 
 Log into the [WorkOS Dashboard](https://dashboard.workos.com/webhooks) and add a Webhook endpoint with the public ngrok URL with `/webhooks` appended.
 
-The local application is listening for webhook requests at http://localhost:8000/webhooks
+The local application is listening for webhook requests at http://localhost:4567/webhooks
 
 ### 4. Set Up Webhooks Secret
 
