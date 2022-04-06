@@ -1,13 +1,63 @@
-<section class="text-center m-5">
-    <h1 class="text-center" >Welcome To the WorkOS Rails SSO Example App</h1>
-    <p>Rails 6 app using WorkOS for Authentication</p>
-    <% if current_user %>
-      <pre><%= JSON.pretty_generate(current_user.attributes) %></pre>
-    <%end%>
-    <%=
-        link_to_if(current_user.nil?, "Login", sign_in_path, class: 'btn btn-primary m-5') do
-            link_to('Sign out',  destroy_user_session_path, :method => 'delete', class: 'btn btn-danger m-5')
-        end
-    %>
+<head>
+<%= stylesheet_link_tag "application", media: "all" %>
 
-</section>
+</head>
+<% if current_user %>
+
+  <div class="logged_in_nav">
+  <div class="flex">
+      <p>You're logged in , welcome!</p>
+  </div>
+  <div>
+      <%= image_tag("workos_logo_new.png", :alt => "WorkOS Logo") %>
+  </div>
+</div>
+<div class='flex'>
+  <div class="logged_in_div_left">
+      <div>
+          <h1>Your app,</h1>
+          <h2>Enterprise Ready</h2>
+      </div>
+      <div>
+          <a href="https://workos.com/" target="_blank"><button class='button'>WorkOS</button></a>
+          <a href="https://workos.com/docs" target="_blank"><button class='button'>Documentation</button></a>
+          <a href="https://workos.com/docs/reference" target="_blank"><button class='button'>API Reference</button></a>
+          <a href="https://workos.com/blog" target="_blank"><button class='button'>Blog</button></a>
+          
+      </div>
+  </div>
+  <div class="logged_in_div_right">
+      <div class="flex_column">
+          <h2>Raw Profile Response Details</h2>
+          <div class="text_box">
+                <pre><%= JSON.pretty_generate(current_user.attributes) %></pre>
+              
+          </div>
+      </div>
+        <%= form_with url: sign_out_path, method: :delete, local: true do |f| %>
+      <div class="button login_button">
+        <%= f.submit "Sign Out", class: 'btn btn-primary m-2' %>
+      </div>
+       <% end %>  
+  </div>
+</div>
+
+<% else %>
+<div class="container_login">
+    <div class='flex_column'>
+    <div class="flex heading_div">
+        <%= image_tag("workos_logo_new.png", :alt => "WorkOS Logo") %>
+        <div class="heading_text_div">
+            <h1>WorkOS</h1>
+        </div>
+    </div>
+
+    <h2>Ruby SSO Example App</h2>
+      <%= form_with url: sso_new_path, method: :get, local: true do |f| %>
+      <div class="button login_button">
+        <%= f.submit "Sign In", class: 'btn btn-primary m-2' %>
+      </div>
+  <% end %>    
+  </div>
+</div>
+<% end %>

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     get 'sign_up', to: 'users/registrations#new'
     get 'sso/new', to: 'users/sessions#auth'
     get 'sso/callback', to: 'users/sessions#callback'
+    delete 'sign_out', to: 'users/sessions#destroy'
+
   end
 
   root to: 'application#home'
