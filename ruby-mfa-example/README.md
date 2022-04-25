@@ -1,4 +1,4 @@
-# ruby-magic-link-example
+# ruby-mfa-example
 
 An example Sinatra application demonstrating how Magic Link works with WorkOS and Ruby.
 
@@ -10,31 +10,23 @@ An example Sinatra application demonstrating how Magic Link works with WorkOS an
 git clone https://github.com/workos-inc/ruby-example-applications.git
 ```
 
-2. Navigate to the Ruby Magic Link app within the main repo and install dependencies:
+2. Navigate to the MFA app within the main repo and install dependencies:
 
 ```sh
-cd ruby-example-applications/ruby-magic-link-example && bundle install
+cd ruby-example-applications/ruby-mfa-example && bundle install
 ```
 
 ## Configure your environment
 
 1. Grab your [API Key](https://dashboard.workos.com/api-keys) and your [Client ID](https://dashboard.workos.com/configuration).
 2. Run `cp .env.example .env` and add your API key and Client ID. The `workos` gem will read your API key from the ENV variable `WORKOS_API_KEY` and your Client ID from the ENV variable `WORKOS_CLIENT_ID`. You may also set the API key and Client ID yourself by adding `WorkOS.key = $YOUR_API_KEY` and `CLIENT_ID = $YOUR_CLIENT_ID` to `app.rb`.
-2. Create an [SSO Connection for the Magic Link](https://dashboard.workos.com/sso/connections).
-3. Add a [Redirect URI](https://dashboard.workos.com/sso/configuration) with the value `http://localhost:4567/callback`.
-5. Update `app.rb`:
 
-```ruby
-REDIRECT_URI = "$YOUR_REDIRECT_URI"
-```
-
-## Run the app and log in using SSO
+## Run the app 
 
 ```sh
 ruby app.rb
 ```
 
-Head to `http://localhost:4567` and submit your email. Then, click on the MagicLink
-in the email sent from WorkOS to authenticate to the example app.
+Head to `http://localhost:4567` and you're all set!
 
 For more information, see the [WorkOS Ruby SDK documentation](https://docs.workos.com/sdk/ruby).
