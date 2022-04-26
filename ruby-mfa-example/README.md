@@ -27,6 +27,8 @@ cd ruby-example-applications/ruby-mfa-example && bundle install
 ruby app.rb
 ```
 
-Head to `http://localhost:4567` and you're all set!
+Head to `http://localhost:4567`
+
+When testing SMS use the {{code}} parameter in your string as well as whatever other message details that you'd like to send as this will generate a random code that the user can verify
 
 For more information, see the [WorkOS Ruby SDK documentation](https://docs.workos.com/sdk/ruby).

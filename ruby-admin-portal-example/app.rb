@@ -18,17 +18,16 @@ post '/provision-enterprise' do
     organizations = WorkOS::Organizations.list_organizations(
         domains: domains
       )
-    binding.pry
     if organizations.data.length == 0 
         $organization = WorkOS::Organizations.create_organization(
             name: organizationName,
             domains: domains
         )
  
-        erb :loggedin
+        erb :logged_in
     else
         $organization = organizations.data[0]
-        erb :loggedin
+        erb :logged_in
     end
 
 end
