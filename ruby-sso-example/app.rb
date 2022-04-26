@@ -11,7 +11,7 @@ WorkOS.key = ENV['WORKOS_API_KEY']
 # Input your connection ID from your WorkOS dashboard
 # Configure your Redirect URIs on the dashboard
 # configuration page.
-CONNECTION_ID = 'conn_01FQ4M53Z6YK034FCN1FV74GTA'
+CONNECTION_ID = ENV['WORKOS_CONN_ID']
 REDIRECT_URI = 'http://localhost:4567/callback'
 
 use(
@@ -39,7 +39,6 @@ get '/auth' do
     client_id: ENV['WORKOS_CLIENT_ID'],
     redirect_uri: REDIRECT_URI,
   )
-
   redirect authorization_url
 end
 

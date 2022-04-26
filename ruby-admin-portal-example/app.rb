@@ -2,6 +2,7 @@ require 'dotenv/load'
 require 'sinatra'
 require 'workos'
 require 'json'
+require 'pry'
 
 $organization
 
@@ -17,7 +18,7 @@ post '/provision-enterprise' do
     organizations = WorkOS::Organizations.list_organizations(
         domains: domains
       )
-    
+    binding.pry
     if organizations.data.length == 0 
         $organization = WorkOS::Organizations.create_organization(
             name: organizationName,
@@ -36,7 +37,7 @@ get('/dsync-admin-portal') do
     organization_id = $organization.id  # ... The ID of the organization to start an Admin Portal session for
     link = WorkOS::Portal.generate_link(
       organization: organization_id,
-      intent: 'sso',
+      intent: 'dsync',
     )
     redirect link
 end
