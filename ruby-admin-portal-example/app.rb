@@ -18,7 +18,6 @@ post '/provision-enterprise' do
     organizations = WorkOS::Organizations.list_organizations(
         domains: domains
       )
-    binding.pry
     if organizations.data.length == 0 
         $organization = WorkOS::Organizations.create_organization(
             name: organizationName,
