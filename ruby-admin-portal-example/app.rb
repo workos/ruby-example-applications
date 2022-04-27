@@ -24,10 +24,10 @@ post '/provision-enterprise' do
             domains: domains
         )
  
-        erb :loggedin
+        erb :logged_in
     else
         $organization = organizations.data[0]
-        erb :loggedin
+        erb :logged_in
     end
 
 end
