@@ -8,7 +8,7 @@ class Users::SessionsController < Devise::SessionsController
   CLIENT_ID = ENV['WORKOS_CLIENT_ID']
 
   # Set the Connection ID that you want to test
-  CONNECTION_ID = 'conn_01FXK764GAJWEMZYKD683DJXY6'
+  CONNECTION_ID = 'YOUR CONNECTION ID'
 
   # GET /sso/new path to authenticate via WorkOS
   # You can also use connection or provider parameters
