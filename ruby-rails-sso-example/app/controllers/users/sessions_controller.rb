@@ -1,6 +1,4 @@
 # frozen_string_literal: true
-require 'pry'
-
 class Users::SessionsController < Devise::SessionsController
 
   # Define WorkOS API key and Client ID from environment variables
