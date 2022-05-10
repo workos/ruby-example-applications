@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+require 'pry'
+
 class Users::SessionsController < Devise::SessionsController
 
   # Define WorkOS API key and Client ID from environment variables
@@ -6,7 +8,7 @@ class Users::SessionsController < Devise::SessionsController
   CLIENT_ID = ENV['WORKOS_CLIENT_ID']
 
   # Set the Connection ID that you want to test
-  CONNECTION_ID = 'conn_01FHQ0G8Q6WTP0YT1E3CVNQD6V'
+  CONNECTION_ID = 'conn_01FXK764GAJWEMZYKD683DJXY6'
 
   # GET /sso/new path to authenticate via WorkOS
   # You can also use connection or provider parameters
@@ -28,9 +30,8 @@ class Users::SessionsController < Devise::SessionsController
       code: params['code'],
       client_id: CLIENT_ID,
     )
-
     @user = User.from_sso(profile_and_token.profile)
-
+    @user.save
     sign_in_and_redirect @user
   end
 
@@ -40,11 +41,6 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def destroy
-    if current_user
-      puts current_user.id
-      session.delete(current_user.id)
-      flash[:success] = 'Goodbye!'
-    end
-    redirect_to root_path
+    sign_out_and_redirect(current_user)
   end
 end
