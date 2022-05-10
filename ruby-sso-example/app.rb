@@ -38,7 +38,9 @@ get '/auth' do
     connection: CONNECTION_ID,
     client_id: ENV['WORKOS_CLIENT_ID'],
     redirect_uri: REDIRECT_URI,
+    state: 'server1'
   )
+  puts authorization_url
   redirect authorization_url
 end
 
@@ -50,8 +52,8 @@ get '/callback' do
     code: params['code'],
     client_id: ENV['WORKOS_CLIENT_ID'],
   )
-
   profile = profile_and_token.profile
+  puts profile
   session[:user] = profile.to_json
   session[:first_name] = profile.first_name
 
