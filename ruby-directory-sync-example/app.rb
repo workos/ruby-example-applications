@@ -6,6 +6,7 @@ require 'sinatra'
 require 'workos'
 require 'json'
 require 'sinatra-websocket'
+require 'pry'
 
 set :server, 'thin'
 set :sockets, []
@@ -82,3 +83,4 @@ post '/webhooks' do
     render :json => {:status => 400, :error => "Webhook failed"} and return
   end
 end
+

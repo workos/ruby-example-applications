@@ -31,7 +31,11 @@
                 <div class="flex_column">
                     <h2>User Profile</h2>
                     <div class="text_box">
-                        <pre><%= JSON.pretty_generate(@user) %></pre>
+                        <ul class="no-bullets">
+                            <%@user.each do |key, value|%>
+                            <li><%=key%>: <%=value%></li>
+                            <%end%>
+                        </ul>
                     </div>
                     <h2>User's Groups</h2>
                     <div class="text_box">
