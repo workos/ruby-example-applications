@@ -194,3 +194,8 @@ div.text_box {
     background-color: white;
     color: #6363f1;
 }
+ul.no-bullets {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+  }
