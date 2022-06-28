@@ -31,12 +31,32 @@ end
 post '/passwordless-auth' do
   session = WorkOS::Passwordless.create_session(
     email: params[:email],
-    type: 'MagicLink',
+    type: 'OneTimeCode',
     redirect_uri: REDIRECT_URI
   )
   WorkOS::Passwordless.send_session(session.id)
 
-  redirect '/check-email'
+  redirect '/input-code'
+end
+
+get '/input-code' do 
+  erb :input_code, :layout => :layout
+end
+
+post '/verify_code' do
+  code = params[:code]
+  url = "https://#{WorkOS::API_HOSTNAME}/passwordless/#{code}/confirm"
+  redirect url
+  # if verify_code == 
+  #   profile_and_token = WorkOS::SSO.profile_and_token(
+  #     code: params['code'],
+  #     client_id: ENV['WORKOS_CLIENT_ID'],
+  #   )
+  #   session[:user] = profile_and_token.profile.to_json
+  #   session[:email] = profile_and_token.profile.emai
+  # else
+  #   erb :input_code, :layout => :layout
+  # end
 end
 
 get '/check-email' do
