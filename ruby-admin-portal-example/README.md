@@ -1,6 +1,6 @@
 # Ruby Example App with Admin Portal powered by WorkOS
 
-An example application demonstrating to use the [WorkOS Ruby SDK](https://github.com/workos-inc/workos-ruby) to access the Admin Portal for SSO and Directory Sync. 
+An example application demonstrating to use the [WorkOS Ruby SDK](https://github.com/workos/workos-ruby) to access the Admin Portal for SSO and Directory Sync. 
 
 ## Prerequisites
 
@@ -11,7 +11,7 @@ Ruby 2.7.2
 1. Clone the main repo and install dependencies for the app you'd like to use:
     ```bash
     # HTTPS
-    git clone https://github.com/workos-inc/ruby-example-applications.git
+    git clone https://github.com/workos/ruby-example-applications.git
     ```
     or
 

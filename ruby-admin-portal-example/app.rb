@@ -2,7 +2,6 @@ require 'dotenv/load'
 require 'sinatra'
 require 'workos'
 require 'json'
-require 'pry'
 
 $organization
 
@@ -23,13 +22,10 @@ post '/provision-enterprise' do
             name: organizationName,
             domains: domains
         )
- 
-        erb :logged_in
     else
         $organization = organizations.data[0]
-        erb :logged_in
     end
-
+    erb :admin_portal_launcher
 end
 
 get('/dsync-admin-portal') do
