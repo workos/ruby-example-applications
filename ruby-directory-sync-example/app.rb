@@ -27,7 +27,7 @@ get '/directories/:id' do
   @users_list = WorkOS::DirectorySync.list_users(directory: params[:id])
   @users = @users_list.data
 
-  erb :directory, :layout => false
+  erb :directory
 end
 
 get '/users/:id' do
@@ -35,7 +35,7 @@ get '/users/:id' do
   @user_groups_list = WorkOS::DirectorySync.list_groups(user: params[:id])
   @user_groups = @user_groups_list.data
 
-  erb :user, :layout => false
+  erb :user
 end
 
 get '/groups/:id' do
@@ -43,7 +43,7 @@ get '/groups/:id' do
   @group_users_list = WorkOS::DirectorySync.list_users(group: params[:id])
   @group_users = @group_users_list.data
 
-  erb :group, :layout => false
+  erb :group
 end
 
 
