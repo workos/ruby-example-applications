@@ -7,14 +7,14 @@ The application is built with Rails 6 and Bootstrap with Webpack, and also uses 
 
 ### Requirements
 
-- Ruby 2.6
-- Rails 6
+- Ruby 2.7.2
+- Rails 7
 - Foreman gem
 
 ### Clone, install and migrate the database
 
 ```bash
-git clone https://github.com/workos-inc/ruby-example-applications.git
+git clone https://github.com/workos/ruby-example-applications.git
 cd ruby-example-applications/ruby-rails-sso-example
 bundle install
 yarn install --check-files
