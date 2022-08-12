@@ -17,7 +17,7 @@ Ruby 2.7.2
 
     ```bash
     # SSH
-    git clone git@github.com:workos-inc/ruby-example-applications.git 
+    git clone git@github.com:workos/ruby-example-applications.git 
     ```
 
 2. Navigate to the Admin Portal app within the cloned repo. 
