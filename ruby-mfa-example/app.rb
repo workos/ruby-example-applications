@@ -4,15 +4,11 @@ require 'dotenv/load'
 require 'sinatra'
 require 'workos'
 require 'json'
-require 'pry'
+
 use Rack::Session::Pool
 
 # Pull API key from ENV variable
 WorkOS.key = ENV['WORKOS_API_KEY']
-
-# Configure your Redirect URIs on the dashboard configuration
-# page: https://dashboard.workos.com/sso/configuration
-
 
 get '/' do
   if session[:factor_list].nil?
