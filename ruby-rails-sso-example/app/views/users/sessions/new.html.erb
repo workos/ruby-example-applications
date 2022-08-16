@@ -29,48 +29,63 @@
                         Sales</button></a>
             </div>
         </div>
-  <div class="logged_in_div_right">
-
-    <h2 class="text-center m-5">User Sign In</h2>
-    <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-        <h4>Username and Password</h4>
-
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <div class="form-group">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
-            </div>
-
-            <div class="form-group">
-            <%= f.label :password %><br />
-            <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
-            </div>
-
-            <% if devise_mapping.rememberable? %>
-            <div class="form-group">
-                <%= f.check_box :remember_me, class: 'm-2' %>
-                <%= f.label :remember_me %>
-            </div>
-            <% end %>
-
-            <div class="actions">
-            <%= f.submit "Log in", class: 'btn btn-primary m-2' %>
-            </div>
-        <% end %>
-        <hr>
-        <%= render "users/shared/links" %>
+        <div class="logged_in_div_right">
+<div class="container mt-5">
+   <div class="col-md-10 ml-auto col-xl-6 mr-auto">
+      <!-- Tabs with Background on Card -->
+      <div class="card">
+        <div class="card-header">
+          <ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist" data-background-color="orange">
+            <li class="tab-item ">
+              <a class="nav-link active" data-toggle="tab" href="#home1" role="tab">Username And Password</a>
+            </li>
+            <li class="tab-item">
+              <a class="nav-link" data-toggle="tab" href="#profile1" role="tab">SSO</a>
+            </li>
+          </ul>
         </div>
-        <div class="col-md-6">
-        <h4> Sign in with SSO </h4>
+        <div class="card-body">
+          <!-- Tab panes -->
+          <div class="tab-content text-center">
+            <div class="tab-pane active" id="home1" role="tabpanel">
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="form-group">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+                </div>
 
-        <%= form_with url: sso_new_path, method: :get, local: true do |f| %>
-            <div class="actions">
-            <%= f.submit "Sign in with SSO", class: 'btn btn-primary m-2' %>
+                <div class="form-group">
+                <%= f.label :password %><br />
+                <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
+                </div>
+
+                <% if devise_mapping.rememberable? %>
+                <div class="form-group">
+                    <%= f.check_box :remember_me, class: 'm-2' %>
+                    <%= f.label :remember_me %>
+                </div>
+                <% end %>
+
+                <div class="actions">
+                <%= f.submit "Log in", class: 'button login_button' %>
+                </div>
+             <% end %>
+            <hr>
+            <%= render "users/shared/links" %>
+            </div>           
+            <div class="tab-pane" id="profile1" role="tabpanel">
+                <%= form_with url: sso_new_path, method: :get, local: true do |f| %>
+                    <div class="actions">
+                    <%= f.submit "Sign in with SSO", class: 'button' %>
+                    </div>
+                 <% end %>
+                </div>    
             </div>
-        <% end %>
+            </div>
+          </div>
         </div>
+      </div>
+      <!-- End Tabs on plain Card -->
     </div>
   </div>
 </div>

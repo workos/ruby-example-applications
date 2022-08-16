@@ -2,9 +2,6 @@
   <div class="flex">
       <div>
         <%= image_tag("workos_full_logo.png", :alt => "WorkOS Logo") %>      </div>
-      <div class="flex">
-          <p>You're logged in <%= @first_name %>, welcome!</p>
-      </div>
   </div>
   <div>
       <a href="https://workos.com/docs" target="_blank"><button class='button nav-item'>Documentation</button></a>
@@ -34,7 +31,7 @@
         </div>
           <div class="logged_in_div_right">
           <% if current_user %>
-              <p>You're logged in , welcome!</p>
+              <p>You're logged in  <%=current_user.first_name%>, welcome!</p>
               <div class="flex_column">
                   <h2>Raw Profile Response Details</h2>
                   <div class="text_box">
@@ -43,9 +40,7 @@
                   </div>
               </div>
                 <%= form_with url: sign_out_path, method: :delete, local: true do |f| %>
-              <div class="button login_button">
-                <%= f.submit "Sign Out", class: 'btn btn-primary m-2' %>
-              </div>
+                <%= f.submit "Sign Out", class: 'button login_button' %>
               <% end %>  
           </div>
         </div>
