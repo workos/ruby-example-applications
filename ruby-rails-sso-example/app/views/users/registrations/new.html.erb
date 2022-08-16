@@ -1,29 +1,35 @@
-<head>
-<%= stylesheet_link_tag "application", media: "all" %>
-
-</head>
-  <div class="logged_in_nav">
+<div class="logged_in_nav">
   <div class="flex">
+      <div>
+        <%= image_tag("workos_full_logo.png", :alt => "WorkOS Logo") %>      </div>
   </div>
   <div>
-      <%= image_tag("workos_logo_new.png", :alt => "WorkOS Logo") %>
+      <a href="https://workos.com/docs" target="_blank"><button class='button nav-item'>Documentation</button></a>
+      <a href="https://workos.com/docs/reference" target="_blank"><button class='button nav-item'>API
+              Reference</button></a>
+      <a href="https://workos.com/blog" target="_blank"><button
+              class='button nav-item blog-nav-button'>Blog</button></a>
+      <a href="https://workos.com/" target="_blank"><button class='button button-outline'>WorkOS</button></a>
   </div>
-</div>
-<div class='flex'>
-  <div class="logged_in_div_left">
-      <div>
-          <h1>Your app,</h1>
-          <h2>Enterprise Ready</h2>
-      </div>
-      <div>
-          <a href="https://workos.com/" target="_blank"><button class='button'>WorkOS</button></a>
-          <a href="https://workos.com/docs" target="_blank"><button class='button'>Documentation</button></a>
-          <a href="https://workos.com/docs/reference" target="_blank"><button class='button'>API Reference</button></a>
-          <a href="https://workos.com/blog" target="_blank"><button class='button'>Blog</button></a>
-          
-      </div>
   </div>
-  <div class="logged_in_div_right">
+    <div class='flex'>
+        <div class="logged_in_div_left">
+            <div class="title-text">
+                <h1>Your app,</h1>
+                <h2 class="home-hero-gradient">Enterprise Ready</h2>
+            </div>
+            <div class="title-subtext">
+                <p>Start selling to enterprise customers with just a few lines of code.</p>
+                <p>Implement features like single sign-on in minutes instead of months.</p>
+            </div>
+            <div class="flex success-buttons">
+                <a href="https://workos.com/signup" target="_blank"><button class='button'>Get Started</button></a>
+                <a href="mailto:sales@workos.com?subject=WorkOS Sales Inquiry" target="_blank"><button
+                        class='button button-outline sales-button'>Contact
+                        Sales</button></a>
+            </div>
+        </div>
+        <div class="logged_in_div_right">
 
   <h2 class="text-center m-5">Sign up</h2>
   <section class="col-8 offset-2 col-sm-6 offset-sm-3">
@@ -49,7 +55,7 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Sign up", class: 'btn btn-primary m-2'  %>
+      <%= f.submit "Sign up", class: 'button'  %>
     </div>
   <% end %>
   <hr>
