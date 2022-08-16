@@ -1,70 +1,91 @@
-<head>
-<%= stylesheet_link_tag "application", media: "all" %>
-
-</head>
-  <div class="logged_in_nav">
+<div class="logged_in_nav">
   <div class="flex">
+      <div>
+        <%= image_tag("workos_full_logo.png", :alt => "WorkOS Logo") %>      </div>
   </div>
   <div>
-      <%= image_tag("workos_logo_new.png", :alt => "WorkOS Logo") %>
+      <a href="https://workos.com/docs" target="_blank"><button class='button nav-item'>Documentation</button></a>
+      <a href="https://workos.com/docs/reference" target="_blank"><button class='button nav-item'>API
+              Reference</button></a>
+      <a href="https://workos.com/blog" target="_blank"><button
+              class='button nav-item blog-nav-button'>Blog</button></a>
+      <a href="https://workos.com/" target="_blank"><button class='button button-outline'>WorkOS</button></a>
   </div>
-</div>
-<div class='flex'>
-  <div class="logged_in_div_left">
-      <div>
-          <h1>Your app,</h1>
-          <h2>Enterprise Ready</h2>
-      </div>
-      <div>
-          <a href="https://workos.com/" target="_blank"><button class='button'>WorkOS</button></a>
-          <a href="https://workos.com/docs" target="_blank"><button class='button'>Documentation</button></a>
-          <a href="https://workos.com/docs/reference" target="_blank"><button class='button'>API Reference</button></a>
-          <a href="https://workos.com/blog" target="_blank"><button class='button'>Blog</button></a>
-          
-      </div>
   </div>
-  <div class="logged_in_div_right">
-
-    <h2 class="text-center m-5">User Sign In</h2>
-    <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-        <h4>Username and Password</h4>
-
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <div class="form-group">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+    <div class='flex'>
+        <div class="logged_in_div_left">
+            <div class="title-text">
+                <h1>Your app,</h1>
+                <h2 class="home-hero-gradient">Enterprise Ready</h2>
             </div>
-
-            <div class="form-group">
-            <%= f.label :password %><br />
-            <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
+            <div class="title-subtext">
+                <p>Start selling to enterprise customers with just a few lines of code.</p>
+                <p>Implement features like single sign-on in minutes instead of months.</p>
             </div>
-
-            <% if devise_mapping.rememberable? %>
-            <div class="form-group">
-                <%= f.check_box :remember_me, class: 'm-2' %>
-                <%= f.label :remember_me %>
+            <div class="flex success-buttons">
+                <a href="https://workos.com/signup" target="_blank"><button class='button'>Get Started</button></a>
+                <a href="mailto:sales@workos.com?subject=WorkOS Sales Inquiry" target="_blank"><button
+                        class='button button-outline sales-button'>Contact
+                        Sales</button></a>
             </div>
-            <% end %>
-
-            <div class="actions">
-            <%= f.submit "Log in", class: 'btn btn-primary m-2' %>
-            </div>
-        <% end %>
-        <hr>
-        <%= render "users/shared/links" %>
         </div>
-        <div class="col-md-6">
-        <h4> Sign in with SSO </h4>
-
-        <%= form_with url: sso_new_path, method: :get, local: true do |f| %>
-            <div class="actions">
-            <%= f.submit "Sign in with SSO", class: 'btn btn-primary m-2' %>
-            </div>
-        <% end %>
+        <div class="logged_in_div_right">
+<div class="container mt-5">
+   <div class="col-md-10 ml-auto col-xl-6 mr-auto">
+      <!-- Tabs with Background on Card -->
+      <div class="card">
+        <div class="card-header">
+          <ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist" data-background-color="orange">
+            <li class="tab-item ">
+              <a class="nav-link active" data-toggle="tab" href="#home1" role="tab">Username And Password</a>
+            </li>
+            <li class="tab-item">
+              <a class="nav-link" data-toggle="tab" href="#profile1" role="tab">SSO</a>
+            </li>
+          </ul>
         </div>
+        <div class="card-body">
+          <!-- Tab panes -->
+          <div class="tab-content text-center">
+            <div class="tab-pane active" id="home1" role="tabpanel">
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="form-group">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+                </div>
+
+                <div class="form-group">
+                <%= f.label :password %><br />
+                <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
+                </div>
+
+                <% if devise_mapping.rememberable? %>
+                <div class="form-group">
+                    <%= f.check_box :remember_me, class: 'm-2' %>
+                    <%= f.label :remember_me %>
+                </div>
+                <% end %>
+
+                <div class="actions">
+                <%= f.submit "Log in", class: 'button login_button' %>
+                </div>
+             <% end %>
+            <hr>
+            <%= render "users/shared/links" %>
+            </div>           
+            <div class="tab-pane" id="profile1" role="tabpanel">
+                <%= form_with url: sso_new_path, method: :get, local: true do |f| %>
+                    <div class="actions">
+                    <%= f.submit "Sign in with SSO", class: 'button' %>
+                    </div>
+                 <% end %>
+                </div>    
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Tabs on plain Card -->
     </div>
   </div>
 </div>

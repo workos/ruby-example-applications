@@ -1,61 +1,30 @@
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="<%= url("/styles/styles.css")%>">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
-    </head>
-    <body class="container_success">
-        <div class="logged_in_nav">
-            <div class="flex">
-                <p>Directory Users and Groups</p>
+    <div class="logged_in_div_right">
+        <div class="flex_column">
+            <h2>Users</h2>
+            <div class="text_box">
+                <ul>
+                  <% @users.each do |user| %>
+                    <li>
+                      <a href="/users/<%= user.id %>">
+                        <%= user.username %>
+                      </a>
+                    </li>
+                  <% end %>
+                </ul>
             </div>
-            <div>
-                <img src="<%= url("/images/workos_logo_new.png")%>" alt="workos logo">
+            <h2>Groups</h2>
+            <div class="text_box">
+              <ul>
+                <% @groups.each do |group| %>
+                  <li>
+                    <a href="/groups/<%= group.id %>">
+                      <%= group.name %>
+                    </a>
+                  </li>
+                <% end %>
+              </ul>
             </div>
-        </div>
-        <div class='flex'>
-            <div class="logged_in_div_left">
-                <div>
-                    <h1>Your app,</h1>
-                    <h2>Enterprise Ready</h2>
-                </div>
-                <div>
-                    <a href="https://workos.com/" target="_blank"><button class='button'>WorkOS</button></a>
-                    <a href="https://workos.com/docs" target="_blank"><button class='button'>Documentation</button></a>
-                    <a href="https://workos.com/docs/reference" target="_blank"><button class='button'>API Reference</button></a>
-                    <a href="https://workos.com/blog" target="_blank"><button class='button'>Blog</button></a>
-                    <a href="javascript:history.back()"><button class='button'>Home</button></a>
-                    
-                </div>
-            </div>
-            <div class="logged_in_div_right">
-                <div class="flex_column">
-                    <h2>Users</h2>
-                    <div class="text_box">
-                        <ul>
-                          <% @users.each do |user| %>
-                            <li>
-                              <a href="/users/<%= user.id %>">
-                                <%= user.username %>
-                              </a>
-                            </li>
-                          <% end %>
-                        </ul>
-                    </div>
-                    <h2>Groups</h2>
-                    <div class="text_box">
-                      <ul>
-                        <% @groups.each do |group| %>
-                          <li>
-                            <a href="/groups/<%= group.id %>">
-                              <%= group.name %>
-                            </a>
-                          </li>
-                        <% end %>
-                      </ul>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </body>
+        </div> 
+    </div>
 </html>

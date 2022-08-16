@@ -7,7 +7,7 @@ An example Sinatra application demonstrating how Directory Sync works with WorkO
 1. Clone the main repo:
 
 ```sh
-git clone https://github.com/workos-inc/ruby-example-applications.git
+git clone https://github.com/workos/ruby-example-applications.git
 ```
 
 2. Navigate to the Ruby Directory Sync app within the main repo and install dependencies:

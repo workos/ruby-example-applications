@@ -1,13 +1,49 @@
-<!doctype html>
-<html>
-  <head>
-    <title>WorkOS Ruby MFA Example</title>
-    <link rel="stylesheet" type="text/css" href="<%= url("/styles.css")%>">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <link rel="stylesheet" href= <%= url("/styles/styles.css")%>>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+        <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+
     </head>
-  <body>
-    <div class='container_success'>
-      <%= yield %>
+    
+    <body>
+ 
+   <div class="logged_in_nav">
+        <div class="flex">
+            <div>
+                <img src="<%= url("images/workos_full_logo.png")%>" alt="workos logo">
+            </div>
+        </div>
+        <div>
+            <a href="https://workos.com/docs" target="_blank"><button class='button nav-item'>Documentation</button></a>
+            <a href="https://workos.com/docs/reference" target="_blank"><button class='button nav-item'>API
+                    Reference</button></a>
+            <a href="https://workos.com/blog" target="_blank"><button
+                    class='button nav-item blog-nav-button'>Blog</button></a>
+            <a href="https://workos.com/" target="_blank"><button class='button button-outline'>WorkOS</button></a>
+        </div>
     </div>
-  </body>
+    <div class='flex'>
+        <div class="logged_in_div_left">
+            <div class="title-text">
+                <h1>Your app,</h1>
+                <h2 class="home-hero-gradient">Enterprise Ready</h2>
+            </div>
+            <div class="title-subtext">
+                <p>Start selling to enterprise customers with just a few lines of code.</p>
+                <p>Implement features like single sign-on in minutes instead of months.</p>
+            </div>
+            <div class="flex success-buttons">
+                <a href="https://workos.com/signup" target="_blank"><button class='button'>Get Started</button></a>
+                <a href="mailto:sales@workos.com?subject=WorkOS Sales Inquiry" target="_blank"><button
+                        class='button button-outline sales-button'>Contact
+                        Sales</button></a>
+            </div>
+        </div>
+            <div class="logged_in_div_right">
+               <%= yield %>
+            </div>
+        </div>
+    </body>
 </html>

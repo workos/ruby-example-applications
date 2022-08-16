@@ -7,7 +7,7 @@ An example Sinatra application demonstrating how Magic Link works with WorkOS an
 1. Clone the main repo:
 
 ```sh
-git clone https://github.com/workos-inc/ruby-example-applications.git
+git clone https://github.com/workos/ruby-example-applications.git
 ```
 
 2. Navigate to the MFA app within the main repo and install dependencies:

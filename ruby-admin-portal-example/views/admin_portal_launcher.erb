@@ -1,12 +1,8 @@
-<% if @current_user %>
-
-<div class="logged_in_nav">
+<div class="container_success">
+   <div class="logged_in_nav">
         <div class="flex">
             <div>
-                <img src="<%= url("images/workos-logo-with-text.png")%>" alt="workos logo">
-            </div>
-            <div class="flex">
-                <p>You're logged in <%= @email %>, welcome!</p>
+                <img src= <%= url("images/workos-logo-with-text.png")%>>
             </div>
         </div>
         <div>
@@ -35,39 +31,16 @@
                         Sales</button></a>
             </div>
         </div>
-  <div class="logged_in_div_right">
-      <div class="flex_column">
-          <h2>Raw Profile Response Details</h2>
-          <div class="text_box">
-            <pre class="prettyprint"><%= @current_user %></pre>
-          </div>
-      </div>
-      <a class='button logout_button' href='/logout'>Sign Out</a>
-  </div>
-</div>
-
-
-<% else %>
-  <div class="container_login">
-    <div class='flex_column'>
-    <div class="flex heading_div">
-        <img src="<%= url("/workos_logo_new.png")%>" alt="workos logo">
-        <div class="heading_text_div">
-            <h1>WorkOS</h1>
-        </div>
-    </div>
-
-    <h2>Ruby Magic Link Example App</h2>
-      <form method="POST" action="/passwordless-auth">
-        <div class='flex_column'>
-            <div>
-                <input type="text" id="email" name="email" class="text_input">
-            </div>
-            <div>
-                <button type="submit" class="button">Submit Email for Magic Link</button>
+        <div class="logged_in_div_right">
+            <div class="flex_column">
+                <h2>Which Admin Portal would you like to launch?</h2>
+                <div>
+                    <a href="/sso-admin-portal"><button class='button dsync_button'>Launch SSO</button></a>
+                </div>
+                <div>
+                    <a href="/dsync-admin-portal"><button class='button dsync_button'>Launch Directory Sync</button></a>
+                </div>
             </div>
         </div>
-      </form>
     </div>
 </div>
-<% end %>

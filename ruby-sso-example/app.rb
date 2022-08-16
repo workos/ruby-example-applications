@@ -11,8 +11,10 @@ WorkOS.key = ENV['WORKOS_API_KEY']
 # Input your connection ID from your WorkOS dashboard
 # Configure your Redirect URIs on the dashboard
 # configuration page.
-CONNECTION_ID = ENV['WORKOS_CONN_ID']
+CONNECTION_ID = ENV['WORKOS_CONNECTION_ID']
+CLIENT_ID = ENV['WORKOS_CLIENT_ID']
 REDIRECT_URI = 'http://localhost:4567/callback'
+
 
 use(
   Rack::Session::Cookie,
@@ -34,13 +36,12 @@ end
 # in place of the connection parameter
 # https://workos.com/docs/reference/sso/authorize/get
 get '/auth' do
+  puts CONNECTION_ID
   authorization_url = WorkOS::SSO.authorization_url(
+    client_id: CLIENT_ID,
     connection: CONNECTION_ID,
-    client_id: ENV['WORKOS_CLIENT_ID'],
     redirect_uri: REDIRECT_URI,
-    state: 'server1'
   )
-  puts authorization_url
   redirect authorization_url
 end
 
@@ -53,7 +54,6 @@ get '/callback' do
     client_id: ENV['WORKOS_CLIENT_ID'],
   )
   profile = profile_and_token.profile
-  puts profile
   session[:user] = profile.to_json
   session[:first_name] = profile.first_name
 
