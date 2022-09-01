@@ -1,6 +1,6 @@
 # ruby-mfa-example
 
-An example Sinatra application demonstrating how Magic Link works with WorkOS and Ruby.
+An example Sinatra application demonstrating how MFA works with WorkOS and Ruby.
 
 ## Clone and Install
 
