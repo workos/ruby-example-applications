@@ -28,7 +28,7 @@ use(
 get '/' do
   @current_user = session[:user] && JSON.pretty_generate(session[:user])
   @first_name = session[:first_name]
-  erb :index, :layout => :layout
+  erb :login, :layout => :layout
 end
 
 # Authenticate a user by sending them to the WorkOS API
