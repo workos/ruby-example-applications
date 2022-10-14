@@ -26,8 +26,6 @@ use(
 )
 
 get '/' do
-  @current_user = session[:user] && JSON.pretty_generate(session[:user])
-  @first_name = session[:first_name]
   erb :login, :layout => :layout
 end
 
