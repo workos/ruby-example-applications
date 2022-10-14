@@ -6,13 +6,13 @@
         </div>
 
         <h2>Ruby Audit Logs Example App</h2>
-        <form method="POST" action="{{ url_for('set_org') }}">
-            <div class='flex_column'>
+        <form method="POST" action="/set_org">
+            <div class="flex-column">
                 <div>
-                    <input type="text" id="org" name="org" class="text-input">
+                    <input class="text-input" type="text" id="org" name="org">
                 </div>
                 <div>
-                    <button type="submit" class="button">Submit Organization ID</button>
+                <button type="submit" name="type" value="org" class="button">Submit Organization ID</button>
                 </div>
             </div>
         </form>

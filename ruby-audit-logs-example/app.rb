@@ -29,10 +29,21 @@ get '/' do
   erb :login, :layout => :layout
 end
 
-# Authenticate a user by sending them to the WorkOS API
-# You can also use domain or provider parameters
-# in place of the connection parameter
-# https://workos.com/docs/reference/sso/authorize/get
+
+post '/set_org' do
+  organization_id = params[:org]
+
+  session[:organization_id] = organization_id
+  
+  organization = WorkOS::Organizations.get_organization(
+  id: organization_id
+  )
+
+  org_name = organization.name
+  session[:organization_name] = org_name
+  puts org_name
+end  
+
 get '/auth' do
   puts CONNECTION_ID
   authorization_url = WorkOS::SSO.authorization_url(
@@ -45,19 +56,6 @@ get '/auth' do
 end
 
 
-
-# Exchange a code for a user profile at the callback route
-get '/callback' do
-  profile_and_token = WorkOS::SSO.profile_and_token(
-    code: params['code'],
-    client_id: ENV['WORKOS_CLIENT_ID'],
-  )
-  profile = profile_and_token.profile
-  session[:user] = profile.to_json
-  session[:first_name] = profile.first_name
-
-  redirect '/'
-end
 
 # Logout a user
 get '/logout' do
