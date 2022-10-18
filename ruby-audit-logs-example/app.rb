@@ -31,17 +31,19 @@ end
 
 
 post '/set_org' do
-  organization_id = params[:org]
+  @organization_id = params[:org]
 
-  session[:organization_id] = organization_id
+  session[:organization_id] = @organization_id
   
   organization = WorkOS::Organizations.get_organization(
-  id: organization_id
+  id: @organization_id
   )
 
-  org_name = organization.name
-  session[:organization_name] = org_name
-  redirect '/'
+  puts organization
+
+  @org_name = organization.name
+  session[:organization_name] = @org_name
+  erb :send_events, :layout => :layout
 end  
 
 get '/auth' do
