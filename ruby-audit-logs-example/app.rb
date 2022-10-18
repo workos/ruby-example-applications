@@ -41,7 +41,7 @@ post '/set_org' do
 
   org_name = organization.name
   session[:organization_name] = org_name
-  puts org_name
+  redirect '/'
 end  
 
 get '/auth' do
