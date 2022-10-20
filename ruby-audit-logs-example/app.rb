@@ -38,13 +38,32 @@ post '/set_org' do
   organization = WorkOS::Organizations.get_organization(
   id: @organization_id
   )
-
-  puts organization
-
+  
   @org_name = organization.name
   session[:organization_name] = @org_name
   erb :send_events, :layout => :layout
-end  
+end
+
+post '/send_event' do
+  event_type = params[:event]
+  organization_id = session[:organization_id]
+
+  events = [
+        'user_signed_in',
+        'user_logged_out',
+        'user_organization_deleted',
+        'user_connection_deleted',
+    ]
+
+  event = events[event_type.to_i]
+
+  WorkOS::AuditLogs.create_event(
+    organization: organization_id,
+    event: event
+  )
+
+  erb :send_events, :layout => :layout
+end
 
 get '/auth' do
   puts CONNECTION_ID

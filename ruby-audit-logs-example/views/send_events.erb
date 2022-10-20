@@ -56,27 +56,27 @@
                         </div>
                     </div>
                     <hr style="height:0.5px;width:100%;">
-                    <form action="{{ url_for('send_event') }}" method="POST">
+                    <form  method="POST" action="/send_event">
                         <div class="flex margin-y-15">                                                                
                             <div>
-                                <button class="box" name="event" id="user_signed_in" value="0" type="submit" onclick="showSnackbar()">                            
+                                <button class="box" name="event" id="user_signed_in" value="0" type="submit">                            
                                     <div class="flex width-100p">
                                         <p>User Signed In</p> 
                                     </div>                           
                                 </button>                    
-                                <button class="box" name="event" id="user_logged_out" value="1" type="submit" onclick="showSnackbar()">                            
+                                <button class="box" name="event" id="user_logged_out" value="1" type="submit">                            
                                     <div class="flex width-100p">
                                         <p>User Logged Out</p> 
                                     </div>                           
                                 </button> 
                             </div>
                             <div>
-                                <button class="box" name="event" id="user_org_deleted" value="2" type="submit" onclick="showSnackbar()">                            
+                                <button class="box" name="event" id="user_org_deleted" value="2" type="submit">                            
                                     <div class="flex width-100p">
                                         <p>User Organization Deleted</p> 
                                     </div>                           
                                 </button>                    
-                                <button class="box" name="event" id="user_connection_deleted" value="3" type="submit" onclick="showSnackbar()">                            
+                                <button class="box" name="event" id="user_connection_deleted" value="3" type="submit">                            
                                     <div class="flex width-100p">
                                         <p>User Connection Deleted</p> 
                                     </div>                           
