@@ -1,7 +1,5 @@
 require 'date'
 
-puts DateTime.now
-
 $user_signed_in = {
     "action": "user.signed_in",
     "occurred_at": DateTime.now,

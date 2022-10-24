@@ -4,6 +4,7 @@ require 'dotenv/load'
 require 'sinatra'
 require 'workos'
 require 'json'
+require 'date'
 require_relative 'audit_log_events.rb'
 
 # Pull API key from ENV variable
@@ -70,6 +71,15 @@ get '/export_events' do
   @organization_id = session[:organization_id]
   @org_name = session[:organization_name]
   erb :export_events, :layout => :layout
+end
+
+post '/get_events' do
+  organization_id = session[:organization_id]
+  event_type = params[:event]
+  today = DateTime.now
+  last_month = DateTime.now.prev_month
+  
+
 end  
 
 

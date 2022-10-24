@@ -45,18 +45,18 @@
                 </div>
             </div>
                 <div class="flex  card">                                                                
-                    <div class="flex">
-                        <button class="box" name="event" id="generate_csv" value="generate_csv">                            
+                    <form method="POST" action="/get_events" class="flex">
+                        <button class="box" name="event" id="generate_csv" value="generate_csv" type="submit">                            
                             <div class="flex width-100p">
                                 <p>Generate CSV</p> 
                             </div>                           
                         </button>                    
-                        <button class="box" name="event" id="access_csv" value="access_csv">                            
+                        <button class="box" name="event" id="access_csv" value="access_csv" type="submit">                            
                             <div class="flex width-100p">
                                 <p>Access CSV</p> 
                             </div>                           
                         </button> 
-                    </div>                    
+                    </form>                    
                 </div>
         </div>
     </div>
