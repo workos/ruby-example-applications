@@ -66,16 +66,6 @@ post '/send_event' do
   erb :send_events, :layout => :layout
 end
 
-get '/auth' do
-  puts CONNECTION_ID
-  authorization_url = WorkOS::SSO.authorization_url(
-    client_id: CLIENT_ID,
-    connection: CONNECTION_ID,
-    redirect_uri: REDIRECT_URI,
-  )
-  puts authorization_url
-  redirect authorization_url
-end
 
 
 
