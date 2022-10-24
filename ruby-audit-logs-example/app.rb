@@ -66,7 +66,9 @@ post '/send_event' do
   erb :send_events, :layout => :layout
 end
 
-
+get '/export_events' do
+  erb :export_events, :layout => :layout
+end  
 
 
 # Logout a user
