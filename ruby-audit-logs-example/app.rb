@@ -4,6 +4,7 @@ require 'dotenv/load'
 require 'sinatra'
 require 'workos'
 require 'json'
+require_relative 'audit_log_events.rb'
 
 # Pull API key from ENV variable
 WorkOS.key = ENV['WORKOS_API_KEY']
@@ -49,10 +50,10 @@ post '/send_event' do
   organization_id = session[:organization_id]
 
   events = [
-        'user_signed_in',
-        'user_logged_out',
-        'user_organization_deleted',
-        'user_connection_deleted',
+        $user_signed_in,
+        $user_logged_out,
+        $user_organization_deleted,
+        $user_connection_deleted,
     ]
 
   event = events[event_type.to_i]
