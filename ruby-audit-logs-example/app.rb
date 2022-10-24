@@ -67,13 +67,15 @@ post '/send_event' do
 end
 
 get '/export_events' do
+  @organization_id = session[:organization_id]
+  @org_name = session[:organization_name]
   erb :export_events, :layout => :layout
 end  
 
 
 # Logout a user
 get '/logout' do
-  session[:user] = nil
-
+  session[:organization_id] = nil
+  session[:organization_name] = nil
   redirect '/'
 end

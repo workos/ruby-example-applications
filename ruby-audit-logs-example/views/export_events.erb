@@ -33,15 +33,15 @@
         </div>
         <div class="logged_in_div_right">
             <div class="flex flex-start width-40vw">
-                <div><h1><%=orgName%></h1></div>
+                <div><h1><%=@org_name%></h1></div>
             </div>
             <div class="flex card width-40vw space-between ">
                 <div>
-                    <code class="org-id"><%=orgId%></code>
+                    <code class="org-id"><%=@organization_id%></code>
                 </div>
                 <div class="org-button-div">
                     <a href="/logout"><button class="button">Change Org</button></a>
-                    <a href="javascript:history.back()"><button class="button">Go Back</button></a>                
+                    <a href="/set_org"><button class="button">Go Back</button></a>                
                 </div>
             </div>
                 <div class="flex  card">                                                                
