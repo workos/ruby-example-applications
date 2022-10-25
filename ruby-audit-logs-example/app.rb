@@ -5,6 +5,7 @@ require 'sinatra'
 require 'workos'
 require 'json'
 require 'date'
+require 'open-uri'
 require_relative 'audit_log_events.rb'
 
 # Pull API key from ENV variable
@@ -76,9 +77,29 @@ end
 post '/get_events' do
   organization_id = session[:organization_id]
   event_type = params[:event]
-  today = DateTime.now
-  last_month = DateTime.now.prev_month
+  today = DateTime.now.to_s
+  last_month = DateTime.now.prev_month.to_s
   
+  if event_type == 'generate_csv'
+    audit_log_export = WorkOS::AuditLogs.create_export(
+      organization: organization_id,
+      range_start: last_month,
+      range_end: today
+    )
+    session[:export_id] = audit_log_export.id
+    puts audit_log_export.id
+    erb :export_events, :layout => :layout
+  end
+  
+  if event_type == 'access_csv'
+    export_id = session[:export_id].to_s
+    puts export_id
+    audit_log_export = WorkOS::AuditLogs.get_export(
+      id: export_id
+    )
+    puts audit_log_export.url
+    open(audit_log_export.url)
+  end
 
 end  
 
