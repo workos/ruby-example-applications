@@ -6,6 +6,7 @@ require 'workos'
 require 'json'
 require 'date'
 require 'open-uri'
+require 'csv'
 require_relative 'audit_log_events.rb'
 
 # Pull API key from ENV variable
@@ -45,7 +46,8 @@ end
 
 post '/send_event' do
   event_type = params[:event]
-  organization_id = session[:organization_id]
+  @organization_id = session[:organization_id]
+  @org_name = session[:organization_name]
 
   events = [
         $user_signed_in,
@@ -57,7 +59,7 @@ post '/send_event' do
   event = events[event_type.to_i]
 
   WorkOS::AuditLogs.create_event(
-    organization: organization_id,
+    organization: @organization_id,
     event: event
   )
 
@@ -94,6 +96,11 @@ post '/get_events' do
       id: export_id
     )
     url = audit_log_export.url
+    download = open(url)
+    IO.copy_stream(download, 'test.csv')
+    CSV.new(download).each do |l|
+      puts l
+    end
   end
 
 end  
