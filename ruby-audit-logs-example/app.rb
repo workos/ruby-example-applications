@@ -12,12 +12,8 @@ require_relative 'audit_log_events.rb'
 WorkOS.key = ENV['WORKOS_API_KEY']
 
 # Input your connection ID from your WorkOS dashboard
-# Configure your Redirect URIs on the dashboard
-# configuration page.
 CONNECTION_ID = ENV['WORKOS_CONNECTION_ID']
 CLIENT_ID = ENV['WORKOS_CLIENT_ID']
-REDIRECT_URI = 'http://localhost:4567/callback'
-
 
 use(
   Rack::Session::Cookie,
@@ -97,8 +93,7 @@ post '/get_events' do
     audit_log_export = WorkOS::AuditLogs.get_export(
       id: export_id
     )
-    puts audit_log_export.url
-    open(audit_log_export.url)
+    url = audit_log_export.url
   end
 
 end  
@@ -108,5 +103,6 @@ end
 get '/logout' do
   session[:organization_id] = nil
   session[:organization_name] = nil
+  session[:export_id] = nil
   redirect '/'
 end
