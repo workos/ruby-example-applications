@@ -2,7 +2,7 @@
     <div class="logged_in_nav">
         <div class="flex">
             <div>
-                <img src="../static/images/workos-logo-with-text.png" alt="workos logo">
+                <img src="images/workos-logo-with-text.png" alt="workos logo">
             </div>
         </div>
         <div>
@@ -59,7 +59,7 @@
                     <form  method="POST" action="/send_event">
                         <div class="flex margin-y-15">                                                                
                             <div>
-                                <button class="box" name="event" id="user_signed_in" value="0" type="submit">                            
+                                <button class="box" name="event" id="user_signed_in" value="0" type="submit" onclick="showSnackbar()">                            
                                     <div class="flex width-100p">
                                         <p>User Signed In</p> 
                                     </div>                           

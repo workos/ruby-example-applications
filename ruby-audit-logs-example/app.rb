@@ -7,6 +7,7 @@ require 'json'
 require 'date'
 require 'open-uri'
 require 'csv'
+require 'sinatra/flash'
 require_relative 'audit_log_events.rb'
 
 # Pull API key from ENV variable
@@ -15,6 +16,8 @@ WorkOS.key = ENV['WORKOS_API_KEY']
 # Input your connection ID from your WorkOS dashboard
 CONNECTION_ID = ENV['WORKOS_CONNECTION_ID']
 CLIENT_ID = ENV['WORKOS_CLIENT_ID']
+
+enable :sessions
 
 use(
   Rack::Session::Cookie,
@@ -29,7 +32,6 @@ get '/' do
   erb :login, :layout => :layout
 end
 
-
 post '/set_org' do
   @organization_id = params[:org]
 
@@ -43,6 +45,12 @@ post '/set_org' do
   session[:organization_name] = @org_name
   erb :send_events, :layout => :layout
 end
+
+get '/set_org' do
+  @organization_id = session[:organization_id]
+  @org_name = session[:organization_name]
+  erb :send_events, :layout => :layout
+end  
 
 post '/send_event' do
   event_type = params[:event]
@@ -62,6 +70,8 @@ post '/send_event' do
     organization: @organization_id,
     event: event
   )
+
+  # flash.now[:msg]="Log Event Sent"
 
   erb :send_events, :layout => :layout
 end
@@ -86,7 +96,7 @@ post '/get_events' do
     )
     session[:export_id] = audit_log_export.id
     puts audit_log_export.id
-    erb :export_events, :layout => :layout
+    redirect '/export_events'
   end
   
   if event_type == 'access_csv'
@@ -96,11 +106,8 @@ post '/get_events' do
       id: export_id
     )
     url = audit_log_export.url
-    download = open(url)
-    IO.copy_stream(download, 'test.csv')
-    CSV.new(download).each do |l|
-      puts l
-    end
+
+    redirect url
   end
 
 end  

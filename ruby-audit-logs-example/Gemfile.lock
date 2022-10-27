@@ -13,7 +13,9 @@ GEM
       rack (~> 2.2)
       rack-protection (= 2.2.0)
       tilt (~> 2.0)
-    sorbet-runtime (0.5.10262)
+    sinatra-flash (0.3.0)
+      sinatra (>= 1.0.0)
+    sorbet-runtime (0.5.10461)
     tilt (2.0.11)
     workos (2.5.0)
       sorbet-runtime (~> 0.5)
@@ -24,7 +26,8 @@ PLATFORMS
 DEPENDENCIES
   dotenv (= 2.7.6)
   sinatra (= 2.2.0)
+  sinatra-flash
   workos (= 2.5.0)
 
 BUNDLED WITH
-   2.1.4
+   2.3.23
