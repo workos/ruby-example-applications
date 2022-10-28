@@ -3,7 +3,7 @@
 require 'dotenv/load'
 require 'sinatra'
 require 'workos'
-require 'json'
+# require 'json'
 require 'date'
 require_relative 'audit_log_events.rb'
 
