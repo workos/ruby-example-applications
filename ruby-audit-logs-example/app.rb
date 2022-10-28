@@ -5,9 +5,6 @@ require 'sinatra'
 require 'workos'
 require 'json'
 require 'date'
-require 'open-uri'
-require 'csv'
-require 'sinatra/flash'
 require_relative 'audit_log_events.rb'
 
 # Pull API key from ENV variable
@@ -70,8 +67,6 @@ post '/send_event' do
     organization: @organization_id,
     event: event
   )
-
-  # flash.now[:msg]="Log Event Sent"
 
   erb :send_events, :layout => :layout
 end
