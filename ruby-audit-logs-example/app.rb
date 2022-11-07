@@ -6,11 +6,8 @@ require 'workos'
 require 'date'
 require_relative 'audit_log_events.rb'
 
-# Pull API key from ENV variable
+# Pull API key and Client ID from ENV variable
 WorkOS.key = ENV['WORKOS_API_KEY']
-
-# Input your connection ID from your WorkOS dashboard
-CONNECTION_ID = ENV['WORKOS_CONNECTION_ID']
 CLIENT_ID = ENV['WORKOS_CLIENT_ID']
 
 enable :sessions
