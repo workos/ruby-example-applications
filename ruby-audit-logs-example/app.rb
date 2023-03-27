@@ -89,7 +89,7 @@ post '/send_events' do
     event: event,
   )
   
-return redirect("/")
+  redirect to("/set_org?id=#{organization_id}")
 
 
 end
