@@ -1,21 +1,124 @@
+<html>
 
-<div class="container_login">
-    <div class='flex_column'>
-        <div class="flex heading_div">
-            <img src="<%= url("images/workos-logo-with-text.png")%>" alt="workos logo">
-        </div>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css')}}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+</head>
 
-        <h2>Ruby Audit Logs Example App</h2>
-        <form method="POST" action="/set_org">
-            <div class="flex_column">
-                <div>
-                    <input class="text-input" type="text" id="org" name="org">
+<body class="container_success">
+
+    <div class="logged_in_div_left flex_column">
+        <div class="flex logged_in_div_left_title">
+            <div class="flex-column">
+                <div class="flex space-between">
+                    <div><h2>Audit Logs</h2></div>
+                    <img src="<%= url("images/settings.svg")%>" class="icon" alt="settings icon">
                 </div>
+                <div><p class="sub-heading">Sinatra Example App</p></div>
+            </div>                    
+        </div>
+        <hr style="height:0.5px;width:75%;">
+        <div class="flex flex_column success-buttons">
+            <a href="/logout">
+                <div class="flex sidebar-button selected">
+                    <img src="<%= url("images/settings-2.svg")%>" class="icon" alt="settings-2 icon">
+                    <div>
+                        <p>Organizations</p>
+                    </div>
+                </div>
+            </a>            
+            <div id="myBtn" class="flex sidebar-button">
+                <img src="<%= url("images/clipboard-edit.svg")%>" class="icon" alt="clipboard edit icon">
                 <div>
-                <button type="submit" name="type" value="org" class="button">Submit Organization ID</button>
+                    <p>Audit Logs</p>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
-</div>
 
+    <div class="logged_in_div_right">
+        <div class="logged_in_nav">
+            <div class="flex">
+                <div>
+                    <a href="https://workos.com/docs" target="_blank"><button class='button nav-item'>Documentation</button></a>
+                </div>
+                <div>
+                    <a href="https://workos.com/docs/reference" target="_blank"><button class='button nav-item'>API
+                        Reference</button></a>
+                </div>
+                <div>
+                    <a href="https://workos.com/blog" target="_blank"><button
+                        class='button nav-item blog-nav-button'>Blog</button></a>
+                </div>
+                <div>
+                    <a href="https://workos.com/" target="_blank">
+                    <img src="<%= url("images/workos_favicon.png")%>" class="nav-image"  alt="link to workos.com logo">
+                    </a> 
+                </div>
+            </div>
+        </div>
+        <div class="flex_column logged_in_right_content width-65vw height-65vh">    
+            <div class="flex flex-start width-65vw page-title">
+                <h2>Select Organization</h2>
+            </div>       
+            <div class='flex_column card width-65vw'>                
+                <div>
+                    <table class="width-65vw">
+                        <tr>
+                          <th>Organization</th>
+                          <th>ID</th>
+                          <th>View Settings</th>
+                        </tr>
+                        <% @organizations.data.each do |i| %>    
+                          <tr>
+                            <td><%= i.name %></td>
+                            <td><%= i.id %></td>                
+                            <td><a class="button button-outline width-95" href="/set_org?id=<%=i.id%>"><img src="<%= url("images/settings-2.svg")%>" class="icon" alt="workos logo"></a></td>
+                          </tr>
+                        <% end %>           
+                      </table>   
+                </div>                     
+                <div class="flex flex-end width-65vw">
+                    <% if @after %>
+                    <div>
+                        <a href="/?after=<%= @after %>"><button class="button page-title">Previous</button></a>
+                    </div>                        
+                    <% end %>
+                    <% if @before %>
+                    <div>
+                        <a href="/?before=<%= @before %>"><button class="button page-title">Next</button></a>
+                    </div>                    
+                    <% end %>          
+                </div>    
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Please select an Organization</p>
+        </div>
+      
+    </div>
+    <script>
+
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("myBtn");
+    var span = document.getElementsByClassName("close")[0];
+    btn.onclick = function() {
+    modal.style.display = "block";
+    }
+    span.onclick = function() {
+    modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+    }
+    </script>
+</body>
+
+</html>
