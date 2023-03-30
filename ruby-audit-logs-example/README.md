@@ -1,6 +1,6 @@
 # ruby-audit-logs-example
 
-An example Ruby application demonstrating how to use the [WorkOS Ruby SDK](https://github.com/workos/workos-ruby) to send and retrieve Audit Log events. This example is not meant to show a real-world example of an Audit Logs implementation, but rather to show concrete examples of how events can be sent using the Python SDK.
+An example Ruby application demonstrating how to use the [WorkOS Ruby SDK](https://github.com/workos/workos-ruby) to send and retrieve Audit Log events. This example is not meant to show a real-world example of an Audit Logs implementation, but rather to show concrete examples of how events can be sent using the Ruby SDK.
 
 ## Clone and Install
 
@@ -10,7 +10,6 @@ An example Ruby application demonstrating how to use the [WorkOS Ruby SDK](https
    # HTTPS
    $ git clone https://github.com/workos/ruby-example-applications.git
    ```
-   
 
 2. Navigate to the Audit Logs example app within the cloned repo and install dependencies:
 
@@ -40,9 +39,23 @@ Action title: "user.connection_deleted" | Target type: "team"
 4. To obtain a CSV of the Audit Log events that were sent for the last 30 days, click the "Export Events" button. This will bring you to a new page where you can download the events. Downloading the events is a 2 step process. First you need to create the report by clicking the "Generate CSV" button. Then click the "Access CSV" button to download a CSV of the Audit Log events for the selected Organization for the past 30 days.
 
 ## Run the app
+
 ```sh
 ruby app.rb
 ```
+
+## Audit Logs Setup with WorkOS
+
+5. Follow the [Audit Logs configuration steps](https://workos.com/docs/audit-logs/emit-an-audit-log-event/sign-in-to-your-workos-dashboard-account-and-configure-audit-log-event-schemas) to set up the following 2 events that are sent with this example:
+
+Action title: "user.organization_set" | Target type: "team"
+Action title: "user.organization_deleted" | Target type: "team"
+
+6. Configure the Admin Portal Redirect URI.
+
+Navigate to the Configuration tab in your WorkOS Dshboard. From there click the Admin Portal tab. Click the Edit Admin Portal Redirect Links button and add "http://localhost:8000" to the "When clicking the back navigation, return users to:" input, then click Save Redirect Links.
+
+7. To obtain a CSV of the Audit Log events that were sent for the last 30 days, click the "Export Events" tab. This will bring you to a new page where you can download the events. Downloading the events is a 2 step process. First you need to create the report by clicking the "Generate CSV" button. Then click the "Access CSV" button to download a CSV of the Audit Log events for the selected Organization for the past 30 days. You may also adjust the time range using the form inputs.
 
 ## Need help?
 

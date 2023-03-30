@@ -36,7 +36,6 @@ end
 # in place of the connection parameter
 # https://workos.com/docs/reference/sso/authorize/get
 get '/auth' do
-  puts CONNECTION_ID
   authorization_url = WorkOS::SSO.authorization_url(
     client_id: CLIENT_ID,
     connection: CONNECTION_ID,
