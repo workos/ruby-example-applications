@@ -4,8 +4,6 @@ require 'dotenv/load'
 require 'sinatra'
 require 'workos'
 require 'date'
-require_relative 'audit_log_events.rb'
-require 'pry'
 
 # Pull API key and Client ID from ENV variable
 WorkOS.key = ENV['WORKOS_API_KEY']
