@@ -1,7 +1,6 @@
 body {
   font-family: Inter, sans-serif;
   background-color: #f9f9fb;
-
 }
 
 .container_login {
@@ -152,11 +151,18 @@ h1 {
   text-align: left;
   margin-bottom: 0px;
   font-weight: normal;
-  letter-spacing: -.05em;
+  letter-spacing: -0.05em;
 }
 
 .home-hero-gradient {
-  background-image: linear-gradient(45deg, #a163f1, #6363f1 22%, #3498ea 40%, #40dfa3 67%, rgba(64, 223, 163, 0));
+  background-image: linear-gradient(
+    45deg,
+    #a163f1,
+    #6363f1 22%,
+    #3498ea 40%,
+    #40dfa3 67%,
+    rgba(64, 223, 163, 0)
+  );
   background-size: 150% 100%;
   background-repeat: no-repeat;
   -webkit-background-clip: text;
@@ -168,7 +174,7 @@ h1 {
   animation-delay: 0.4s;
   text-align: left;
   font-size: 75px;
-  letter-spacing: -.05em;
+  letter-spacing: -0.05em;
   font-weight: normal;
   margin-top: 0px;
 }
@@ -198,8 +204,14 @@ div.text_box {
   overflow: scroll;
   border-width: 3px;
   border-style: solid;
-  border-image:
-      linear-gradient(#a163f1, #6363f1 22%, #3498ea 40%, #40dfa3 67%, rgba(64, 223, 163, 0)) 0 100%;
+  border-image: linear-gradient(
+      #a163f1,
+      #6363f1 22%,
+      #3498ea 40%,
+      #40dfa3 67%,
+      rgba(64, 223, 163, 0)
+    )
+    0 100%;
 }
 
 .logged_in_nav {
@@ -220,12 +232,6 @@ div.text_box {
 
 .logged_in_nav img {
   height: 50px;
-  border-radius: 50%;
-  border: 2px solid #2f2e2e;
-}
-
-.logged_in_nav img:hover {
-  border: 2px solid #555555;
 }
 
 .nav-item {
