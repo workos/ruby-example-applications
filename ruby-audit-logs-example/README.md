@@ -53,7 +53,7 @@ Action title: "user.organization_deleted" | Target type: "team"
 
 6. Configure the Admin Portal Redirect URI.
 
-Navigate to the Configuration tab in your WorkOS Dshboard. From there click the Admin Portal tab. Click the Edit Admin Portal Redirect Links button and add "http://localhost:8000" to the "When clicking the back navigation, return users to:" input, then click Save Redirect Links.
+Navigate to the Configuration tab in your WorkOS Dshboard. From there click the Admin Portal tab. Click the Edit Admin Portal Redirect Links button and add "http://localhost:4567" to the "When clicking the back navigation, return users to:" input, then click Save Redirect Links.
 
 7. To obtain a CSV of the Audit Log events that were sent for the last 30 days, click the "Export Events" tab. This will bring you to a new page where you can download the events. Downloading the events is a 2 step process. First you need to create the report by clicking the "Generate CSV" button. Then click the "Access CSV" button to download a CSV of the Audit Log events for the selected Organization for the past 30 days. You may also adjust the time range using the form inputs.
 
