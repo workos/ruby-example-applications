@@ -8,10 +8,10 @@ require 'json'
 # Pull API key from ENV variable
 WorkOS.key = ENV['WORKOS_API_KEY']
 
-# Input your connection ID from your WorkOS dashboard
+# Input your organization ID from your WorkOS dashboard
 # Configure your Redirect URIs on the dashboard
 # configuration page.
-CONNECTION_ID = ENV['WORKOS_CONNECTION_ID']
+ORGANIZATION_ID = ENV['WORKOS_ORGANIZATION_ID']
 CLIENT_ID = ENV['WORKOS_CLIENT_ID']
 REDIRECT_URI = 'http://localhost:4567/callback'
 
@@ -32,15 +32,22 @@ get '/' do
 end
 
 # Authenticate a user by sending them to the WorkOS API
-# You can also use domain or provider parameters
-# in place of the connection parameter
 # https://workos.com/docs/reference/sso/authorize/get
-get '/auth' do
-  authorization_url = WorkOS::SSO.authorization_url(
+post '/auth' do
+  login_type = params[:login_method]
+  params = {
     client_id: CLIENT_ID,
-    connection: CONNECTION_ID,
     redirect_uri: REDIRECT_URI,
-  )
+    state: ""
+  }
+
+  if login_type == 'saml'
+    params[:organization] = ORGANIZATION_ID
+  else
+    params[:provider] = login_type
+  end
+
+  authorization_url = WorkOS::SSO.authorization_url(**params)
   redirect authorization_url
 end
 
@@ -48,6 +55,7 @@ end
 
 # Exchange a code for a user profile at the callback route
 get '/callback' do
+
   profile_and_token = WorkOS::SSO.profile_and_token(
     code: params['code'],
     client_id: ENV['WORKOS_CLIENT_ID'],
