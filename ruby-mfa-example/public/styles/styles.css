@@ -1,7 +1,6 @@
 body {
   font-family: Inter, sans-serif;
   background-color: #f9f9fb;
-
 }
 
 .container_login {
@@ -27,6 +26,11 @@ body {
 .flex {
   display: flex;
   justify-content: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
 }
 
 .flex_column {
@@ -267,6 +271,9 @@ pre.prettyprint {
   width: 20vw;
   margin: 0px 15px 0px 15px;
   padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .card {
@@ -282,7 +289,42 @@ pre.prettyprint {
   padding-top: 15px;
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); 
+  z-index: 999; 
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.qr_code_instructions {
+  width: 300px;
+}
+
 .qr_code {
-  width: 7vw;
-  max-width: 100px;
+  width: 300px;
+  margin: 25px;
+}
+
+button:disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
