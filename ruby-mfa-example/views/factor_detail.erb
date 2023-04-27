@@ -7,7 +7,9 @@
             </div>
             <div>
                 <p>Type: <code><%=@factor.type%></code></p>
-                <p>Phone Number: <code><%=@phone_number%></code></p>
+                <% if @factor.type == 'sms' %>
+                    <p>Phone Number: <code><%=@phone_number%></code></p>
+                <% end %>
                 <p>Created At: <code><%=@factor.created_at%></code></p>
                 <p>Updated At: <code><%=@factor.updated_at%></code></p>
             </div>
