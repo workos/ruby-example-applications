@@ -2,38 +2,30 @@
     <div class="flex space_between ">
         <div class="factor_card">
             <h2>Enroll SMS Factor</h2>
-            <form method="POST" action="/enroll_sms_factor">
+            <form method="POST" action="/enroll_sms_factor" class="form">
                 <div class="flex">
-                    <div class="flex">
-                        <input class="text_input" type="text" id="phone_number" name="phone_number"
-                            placeholder="Phone Number">
-                    </div>
+                    <input class="text_input" type="text" id="phone_number" name="phone_number"
+                        placeholder="Phone Number">
                 </div>
-                <div>
-                    <button type="submit" name="type" value="sms" id="sms-factor-submit-btn"
-                        class="button button-outline button-sm" disabled>Enroll New
-                        Factor</button>
-                </div>
+                <button type="submit" name="type" value="sms" id="sms-factor-submit-btn"
+                    class="button button-outline button-sm" disabled>Enroll New
+                    Factor</button>
             </form>
         </div>
 
         <div class="factor_card">
             <h2>Enroll TOTP Factor</h2>
-            <div>
-                <div class="flex-column">
-                    <div class="flex">
-                        <input class="text_input" type="text" id="totp_issuer" name="totp_issuer"
-                            placeholder="TOTP Issuer">
-                    </div>
-                    <div class="flex">
-                        <input class="text_input" type="text" id="totp_user" name="totp_user"
-                            placeholder="User Email">
-                    </div>
+            <div class="form">
+                <div class="flex">
+                    <input class="text_input" type="text" id="totp_issuer" name="totp_issuer"
+                        placeholder="TOTP Issuer">
                 </div>
-                <div>
-                    <button value="totp" id="totp-factor-submit-btn"
-                        class="button button-outline button-sm" disabled>Enroll New Factor</button>
+                <div class="flex">
+                    <input class="text_input" type="text" id="totp_user" name="totp_user"
+                        placeholder="User Email">
                 </div>
+                <button value="totp" id="totp-factor-submit-btn"
+                    class="button button-outline button-sm" disabled>Enroll New Factor</button>
             </div>
         </div>
 
@@ -90,12 +82,12 @@
             })
         })
             .then(response => response.json())
-            .then(qr_code => {
+            .then(response => {
                 overlay.style.display = "block"
                 modal.innerHTML = `
                     <h2>Scan the QR code</h2>
                     <p class="qr_code_instructions">Use the authenticator app to scan the QR code. After you scan the code, click 'Continue'.</p>
-                    <img class="qr_code" src=${qr_code} alt="qr_code">
+                    <img class="qr_code" src=${response.qr_code} alt="qr_code">
                     <a href="/" class="button button-outline">Continue</a>
                 `
             })
