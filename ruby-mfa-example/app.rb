@@ -23,7 +23,6 @@ get '/' do
   end
 end
 
-
 get '/enroll_factor_details' do
   erb :enroll_factor, :layout => :layout
 end
@@ -54,7 +53,8 @@ post '/enroll_totp_factor' do
   session[:factor_list] << new_factor 
   @factors = session[:factor_list]
 
-  return issuer
+  content_type :json
+  return new_factor.totp.to_json
 end
 
 get '/factor_detail' do
