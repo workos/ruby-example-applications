@@ -23,27 +23,38 @@ get '/' do
   end
 end
 
-
 get '/enroll_factor_details' do
   erb :enroll_factor, :layout => :layout
 end
 
-post '/enroll_factor' do
+post '/enroll_sms_factor' do
   factor_type = params[:type]
-  totp_issuer = params[:totp_issuer]
-  totp_user = params[:totp_user]
   phone_number = params[:phone_number]
 
-  
   new_factor = WorkOS::MFA.enroll_factor(
     type: factor_type,
     phone_number: phone_number,
-    totp_issuer: totp_issuer,
-    totp_user: totp_user
     )
   session[:factor_list] << new_factor 
   @factors = session[:factor_list]
   redirect '/'
+end
+
+post '/enroll_totp_factor' do
+  request.body.rewind
+  parsed_body = JSON.parse(request.body.read)
+  (type, issuer, user) = parsed_body.values_at('type', 'issuer', 'user')
+
+  new_factor = WorkOS::MFA.enroll_factor(
+    type: type,
+    totp_issuer: issuer,
+    totp_user: user
+  )
+  session[:factor_list] << new_factor 
+  @factors = session[:factor_list]
+
+  content_type :json
+  return new_factor.totp.to_json
 end
 
 get '/factor_detail' do

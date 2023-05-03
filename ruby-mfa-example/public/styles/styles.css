@@ -1,7 +1,6 @@
 body {
   font-family: Inter, sans-serif;
   background-color: #f9f9fb;
-
 }
 
 .container_login {
@@ -27,6 +26,11 @@ body {
 .flex {
   display: flex;
   justify-content: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
 }
 
 .flex_column {
@@ -119,7 +123,7 @@ h1 {
 
 .logged_in_div_right {
   width: 60%;
-  height: 90vh;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -152,11 +156,18 @@ h1 {
   text-align: left;
   margin-bottom: 0px;
   font-weight: normal;
-  letter-spacing: -.05em;
+  letter-spacing: -0.05em;
 }
 
 .home-hero-gradient {
-  background-image: linear-gradient(45deg, #a163f1, #6363f1 22%, #3498ea 40%, #40dfa3 67%, rgba(64, 223, 163, 0));
+  background-image: linear-gradient(
+    45deg,
+    #a163f1,
+    #6363f1 22%,
+    #3498ea 40%,
+    #40dfa3 67%,
+    rgba(64, 223, 163, 0)
+  );
   background-size: 150% 100%;
   background-repeat: no-repeat;
   -webkit-background-clip: text;
@@ -168,7 +179,7 @@ h1 {
   animation-delay: 0.4s;
   text-align: left;
   font-size: 75px;
-  letter-spacing: -.05em;
+  letter-spacing: -0.05em;
   font-weight: normal;
   margin-top: 0px;
 }
@@ -198,8 +209,14 @@ div.text_box {
   overflow: scroll;
   border-width: 3px;
   border-style: solid;
-  border-image:
-      linear-gradient(#a163f1, #6363f1 22%, #3498ea 40%, #40dfa3 67%, rgba(64, 223, 163, 0)) 0 100%;
+  border-image: linear-gradient(
+      #a163f1,
+      #6363f1 22%,
+      #3498ea 40%,
+      #40dfa3 67%,
+      rgba(64, 223, 163, 0)
+    )
+    0 100%;
 }
 
 .logged_in_nav {
@@ -250,7 +267,6 @@ pre.prettyprint {
   border: none !important;
 }
 
-
 .text_input {
   border: 1px solid #555555;
   border-radius: 10px;
@@ -267,6 +283,9 @@ pre.prettyprint {
   width: 20vw;
   margin: 0px 15px 0px 15px;
   padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .card {
@@ -282,7 +301,46 @@ pre.prettyprint {
   padding-top: 15px;
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.qr_code_instructions {
+  width: 300px;
+}
+
 .qr_code {
-  width: 7vw;
-  max-width: 100px;
+  width: 300px;
+  margin: 25px;
+}
+
+button:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.mt-20 {
+  margin-top: 20px;
 }

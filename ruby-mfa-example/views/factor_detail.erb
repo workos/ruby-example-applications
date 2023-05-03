@@ -7,17 +7,13 @@
             </div>
             <div>
                 <p>Type: <code><%=@factor.type%></code></p>
-                <p>Phone Number: <code><%=@phone_number%></code></p>
+                <% if @factor.type == 'sms' %>
+                    <p>Phone Number: <code><%=@phone_number%></code></p>
+                <% end %>
                 <p>Created At: <code><%=@factor.created_at%></code></p>
                 <p>Updated At: <code><%=@factor.updated_at%></code></p>
             </div>
         </div>
-        <% if @factor.type == 'totp' %>
-        <div class="qr_div">
-            <img class="qr_code" src="<%=@current_factor_qr%>" alt="qr_code">
-        </div>
-
-        <%end%>
     </div>
 
     <div class="flex-column">
@@ -27,7 +23,7 @@
                     <% if @factor.type == 'sms' %>
                     <div>
                         <input type="text" id="sms_message" name="sms_message" class="text_input"
-                            placeholder="Custom SMS Message Input and include {{code}}">
+                            placeholder="Custom SMS Message, include {{code}}">
                     </div>
                     <% end %>
                     <div>
