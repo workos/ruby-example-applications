@@ -4,6 +4,6 @@
 source 'https://rubygems.org'
 
 gem 'dotenv', '2.7.6'
-gem 'sinatra', '2.2.0'
+gem 'sinatra', '2.2.3'
 gem 'workos', '2.5.0'
 gem 'sinatra-websocket', '0.3.1'
