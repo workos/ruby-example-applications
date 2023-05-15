@@ -51,20 +51,30 @@ post '/auth' do
   redirect authorization_url
 end
 
-
-
 # Exchange a code for a user profile at the callback route
 get '/callback' do
+  if params['code']
+    profile_and_token = WorkOS::SSO.profile_and_token(
+      code: params['code'],
+      client_id: ENV['WORKOS_CLIENT_ID'],
+    )
+    profile = profile_and_token.profile
+    session[:user] = profile.to_json
+    session[:first_name] = profile.first_name
 
-  profile_and_token = WorkOS::SSO.profile_and_token(
-    code: params['code'],
-    client_id: ENV['WORKOS_CLIENT_ID'],
-  )
-  profile = profile_and_token.profile
-  session[:user] = profile.to_json
-  session[:first_name] = profile.first_name
+    redirect '/'
+  else
+    session[:error] = params['error']
+    session[:error_description] = params['error_description']
 
-  redirect '/'
+    redirect '/error'
+  end
+end
+
+get '/error' do
+  @error = session[:error]
+  @error_description = session[:error_description]
+  erb :error, :layout => :layout
 end
 
 # Logout a user
