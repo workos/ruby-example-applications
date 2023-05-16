@@ -90,8 +90,8 @@ post '/challenge_factor' do
   erb :challenge_factor, :layout => :layout
 end
 
-post '/verify_factor' do
-  code = params[:code]
+post '/verify_factor' do 
+  code = params.values.join("")
   challenge_id = session[:challenge_id]
   verify_factor = WorkOS::MFA.verify_factor(
     authentication_challenge_id: challenge_id,

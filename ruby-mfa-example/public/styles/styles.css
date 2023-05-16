@@ -26,11 +26,7 @@ body {
 .flex {
   display: flex;
   justify-content: center;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
+  align-items: center;
 }
 
 .flex_column {
@@ -44,12 +40,8 @@ body {
   justify-content: space-between;
 }
 
-.width-75 {
-  width: 75%;
-}
-
-.width-40vw {
-  width: 40vw;
+.space-evenly {
+  justify-content: space-evenly;
 }
 
 .container_success {
@@ -82,7 +74,7 @@ body {
   border: 2px solid #6363f1;
   border-radius: 26px;
   color: white;
-  padding: 16px 32px;
+  padding: 8px 16px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -123,14 +115,13 @@ h1 {
 
 .logged_in_div_right {
   width: 60%;
-  height: 70vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
   bottom: 10%;
-  /* background-color: #f9f9fb; */
 }
 
 .logged_in_div_left {
@@ -225,8 +216,7 @@ div.text_box {
   background-color: #f9f9fb;
   height: 60px;
   padding: 15px 30px 15px 30px;
-
-  z-index: 1000;
+  z-index: 998;
 }
 
 .logged_in_nav p {
@@ -237,10 +227,6 @@ div.text_box {
 
 .logged_in_nav img {
   height: 50px;
-}
-
-.logged_in_nav img:hover {
-  border: 2px solid #555555;
 }
 
 .nav-item {
@@ -270,7 +256,7 @@ pre.prettyprint {
 .text_input {
   border: 1px solid #555555;
   border-radius: 10px;
-  margin: 20px 0px 7px 0px;
+  margin: 7px 0px 7px 0px;
   padding: 5px;
   height: 35px;
   width: 18vw;
@@ -283,9 +269,6 @@ pre.prettyprint {
   width: 20vw;
   margin: 0px 15px 0px 15px;
   padding: 25px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .card {
@@ -296,9 +279,12 @@ pre.prettyprint {
   margin-bottom: 20px;
 }
 
-.qr_div {
-  align-self: center;
-  padding-top: 15px;
+.code-input {
+  width: 75px;
+  height: 100px;
+  margin: 0px 5px 30px 5px;
+  font-size: 60px;
+  color: darkslategray;
 }
 
 .overlay {
@@ -336,11 +322,84 @@ pre.prettyprint {
   margin: 25px;
 }
 
+.settings_icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 button:disabled {
   opacity: 0.5;
   pointer-events: none;
 }
 
-.mt-20 {
-  margin-top: 20px;
+tr {
+  text-align: center;
+  border-bottom: 1px solid #ebebf2;
+}
+
+tr:hover {
+  background-color: #ebebf2;
+}
+
+table,
+td {
+  padding: 5px 40px;
+}
+
+table {
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 25px 0px;
+}
+
+th {
+  text-align: center;
+  font-weight: bolder;
+  font-size: large;
+  background-color: #e3e3e3;
+  border-right: none;
+  border-left: none;
+  padding: 15px 40px;
+}
+
+.ta-left {
+  text-align: left;
+}
+
+.width-75 {
+  width: 75%;
+}
+
+.width-10vw {
+  width: 10vw;
+}
+
+.width-25vw {
+  width: 25vw;
+}
+
+.width-40vw {
+  width: 40vw;
+}
+
+.width-175px {
+  width: 175px;
+}
+
+.width-350px {
+  width: 350px;
+}
+
+.width-587px {
+  width: 587px;
+}
+
+.width-725px {
+  width: 725px;
+}
+
+.height-250px {
+  height: 250px;
 }
