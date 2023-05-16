@@ -1,73 +1,48 @@
 <% if @current_user %>
-
-<div class="logged_in_nav">
-        <div class="flex">
-            <div>
-                <img src="<%= url("images/workos-logo-with-text.png")%>" alt="workos logo">
-            </div>
-            <div class="flex">
-                <p>You're logged in <%= @email %>, welcome!</p>
-            </div>
-        </div>
-        <div>
-            <a href="https://workos.com/docs" target="_blank"><button class='button nav-item'>Documentation</button></a>
-            <a href="https://workos.com/docs/reference" target="_blank"><button class='button nav-item'>API
-                    Reference</button></a>
-            <a href="https://workos.com/blog" target="_blank"><button
-                    class='button nav-item blog-nav-button'>Blog</button></a>
-            <a href="https://workos.com/" target="_blank"><button class='button button-outline'>WorkOS</button></a>
-        </div>
-    </div>
-    <div class='flex'>
-        <div class="logged_in_div_left">
-            <div class="title-text">
-                <h1>Your app,</h1>
-                <h2 class="home-hero-gradient">Enterprise Ready</h2>
-            </div>
-            <div class="title-subtext">
-                <p>Start selling to enterprise customers with just a few lines of code.</p>
-                <p>Implement features like single sign-on in minutes instead of months.</p>
-            </div>
-            <div class="flex success-buttons">
-                <a href="https://workos.com/signup" target="_blank"><button class='button'>Get Started</button></a>
-                <a href="mailto:sales@workos.com?subject=WorkOS Sales Inquiry" target="_blank"><button
-                        class='button button-outline sales-button'>Contact
-                        Sales</button></a>
-            </div>
-        </div>
-  <div class="logged_in_div_right">
-      <div class="flex_column">
-          <h2>Raw Profile Response Details</h2>
+<div class="flex">
+      <div class="logged_in_div_right">
+        <div class="flex_column">
+          <h2>Login Successful</h2>
           <div class="text_box">
-            <pre class="prettyprint"><%= @current_user %></pre>
+            <pre id="noborder" class="prettyprint noborder">
+                        <%=@current_user %>
+                    </pre>
           </div>
+        </div>
       </div>
-      <a class='button logout_button' href='/logout'>Sign Out</a>
-  </div>
-</div>
-
+    </div>    
 
 <% else %>
-  <div class="container_login">
-    <div class='flex_column'>
-    <div class="flex heading_div">
-        <img src="<%= url("/workos_logo_new.png")%>" alt="workos logo">
-        <div class="heading_text_div">
-            <h1>WorkOS</h1>
-        </div>
-    </div>
-
-    <h2>Ruby Magic Link Example App</h2>
-      <form method="POST" action="/passwordless-auth">
-        <div class='flex_column'>
+<div class="flex flex_column height-80vh">
+      <div class="flex height-40vh">
+        <div class="card width-335">
+          <div class="flex_column">
             <div>
-                <input type="text" id="email" name="email" class="text_input">
+              <span>Log in with Magic Link</span>
             </div>
-            <div>
-                <button type="submit" class="button">Submit Email for Magic Link</button>
-            </div>
+            <hr style="width: 100%; margin-top: 15px; margin-bottom: 20px" />
+            <form method="POST" action="/passwordless-auth">
+              <div class="flex_column">
+                <div>
+                  <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    class="text_input width-225px"
+                    placeholder="Enter email"
+                  />
+                </div>
+                <div>
+                  <button type="submit" class="button width-225px">
+                    Login
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
-      </form>
+      </div>
     </div>
-</div>
 <% end %>
+
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>

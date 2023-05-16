@@ -35,17 +35,20 @@ post '/passwordless-auth' do
     redirect_uri: REDIRECT_URI
   )
   WorkOS::Passwordless.send_session(session.id)
-
-  redirect '/check-email'
+  email = session.email
+  magic_link = session.link
+  redirect "/check-email?email=#{email}&magic_link=#{magic_link}"
 end
 
 get '/check-email' do
-  erb :check_email, :layout => :layout
+  email = params[:email]
+  magic_link = params[:magic_link]
+  erb :check_email, locals: { email: email, magic_link: magic_link }, layout: :layout
 end
 
 get '/callback' do
   profile_and_token = WorkOS::SSO.profile_and_token(
-    code: params['code'],
+    code: params[:code],
     client_id: ENV['WORKOS_CLIENT_ID'],
   )
 
