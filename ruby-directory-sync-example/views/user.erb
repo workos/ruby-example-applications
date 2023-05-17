@@ -1,31 +1,27 @@
 <html>
-
     <div class="logged_in_div_right">
         <div class="flex_column">
-            <h2><%=@user.username%> Profile</h2>
-            <div class="text_box">
-                <ul class="no-bullets">
-                    <code class="prettyprint">
-                        <%@user.each do |key, value|%>
-                        <li><%=key%>: <%=value%></li>
-                        <%end%>
-                    </code>
-                </ul>
-            </div>
-            <h2><%=@user.username%>'s' Groups</h2>
-            <div class="text_box">
-                <ul>
-                <ul>
-                    <% @user_groups.each do |group| %>
-                    <li>
-                        <a href="/groups/<%= group.id %>">
-                        <%= group.name %>
-                        </a>
-                    </li>
-                    <% end %>
-                </ul>
-                </ul>
+            <div class="width-75vw">
+                <h2 class="ta-left "><%= @user.first_name %> <%= @user.last_name %></h2>
+            </div>            
+            <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="ta-left">Key</th>
+                        <th class="ta-left">Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% @user.each do |key, value| %>
+                    <tr>
+                        <td class="ta-left"><%= key %></td>
+                        <td class="ta-left"><%= value %></td>
+                    </tr>
+                <% end %>
+                </tbody>
+            </table>
             </div>
         </div>
-    </div>  
+    </div>
 </html>
