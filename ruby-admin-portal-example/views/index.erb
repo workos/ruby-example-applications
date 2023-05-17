@@ -1,22 +1,40 @@
-<body class="container_login">
-    <div class='flex_column'>
-        <div class="flex heading_div">
-             <img src="<%= url("images/workos-logo-with-text.png")%>" alt="workos logo">
-        </div>
-
-        <h2>Ruby Admin Portal Example App</h2>
-        <form method="POST" action="/provision-enterprise">
-            <div class='flex_column'>
-                <div>
-                    <input type="text" placeholder='Enter Your Organization Name to Provision' id="org" name="org" class="text_input" required>
-                </div>
-                <div>
-                    <input type="text" placeholder='Enter a Space Separated List of Domains Used By the Org' id="domain" name="domain" class="text_input" required>
-                </div>
-                <div>
-                    <button type="submit" class="button">Create Organization and Log In</button>
-                </div>
+<div class="flex flex_column height-80vh">
+      <div class="flex height-40vh">
+        <div class="card width-335">
+          <form method="POST" action="/provision-enterprise">
+            <div class="flex_column">
+              <div>
+                <span>Admin Portal Example</span>
+              </div>
+              <hr style="width: 100%; margin-top: 15px; margin-bottom: 20px" />
+              <div>
+                <input
+                  type="text"
+                  placeholder="Enter name of Organization"
+                  id="org"
+                  name="org"
+                  class="text_input"
+                  required
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Enter domains (space separated)"
+                  id="domain"
+                  name="domain"
+                  class="text_input text_input_2"
+                  required
+                />
+              </div>
+              <br />
+              <div>
+                <button type="submit" class="button">
+                  Create Organization and Log In
+                </button>
+              </div>
             </div>
-        </form>
+          </form>
+        </div>
+      </div>
     </div>
-</body>
