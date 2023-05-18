@@ -28,20 +28,13 @@ post '/provision-enterprise' do
     erb :admin_portal_launcher
 end
 
-get('/dsync-admin-portal') do
-    organization_id = $organization.id  # ... The ID of the organization to start an Admin Portal session for
-    link = WorkOS::Portal.generate_link(
-      organization: organization_id,
-      intent: 'dsync',
-    )
-    redirect link
-end
 
-get('/sso-admin-portal') do
+get('/launch-admin-portal') do
+    intent = params["intent"]
     organization_id = $organization.id  # ... The ID of the organization to start an Admin Portal session for
-    link = WorkOS::Portal.generate_link(
+    portal_link = WorkOS::Portal.generate_link(
       organization: organization_id,
-      intent: 'sso',
-    )
-    redirect link
+      intent: intent,
+    ) 
+    redirect portal_link
 end

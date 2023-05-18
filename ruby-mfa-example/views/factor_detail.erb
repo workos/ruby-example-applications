@@ -1,37 +1,60 @@
-
 <div class="flex_column">
-    <div class="flex">
-        <div class="flex-column">
-            <div>
-                <h2>ID: <%=@factor.id%></h2>
+          <div class="flex">
+            <div class="flex-column">
+                <h2>Factor Details</h2>
+                <table>
+                    <tr>
+                      <td class="ta-left">ID:</td>
+                      <td><code><%= @factor.id %></code></td>
+                    </tr>
+                    <tr>
+                      <td class="ta-left">Type:</td>
+                      <td><code><%= @factor.type %></code></td>
+                    </tr>
+                    <tr>
+                      <td class="ta-left">Phone Number:</td>
+                      <td><code><%= @phone_number %></code></td>
+                    </tr>
+                    <tr>
+                      <td class="ta-left">Created At:</td>
+                      <td><code><%= @factor.created_at %></code></td>
+                    </tr>
+                    <tr>
+                      <td class="ta-left">Updated At:</td>
+                      <td><code><%= @factor.updated_at %></code></td>
+                    </tr>
+                </table>
             </div>
+          </div>
+          <div class="flex">
             <div>
-                <p>Type: <code><%=@factor.type%></code></p>
+              <form method="POST" action="/challenge_factor">
                 <% if @factor.type == 'sms' %>
-                    <p>Phone Number: <code><%=@phone_number%></code></p>
-                <% end %>
-                <p>Created At: <code><%=@factor.created_at%></code></p>
-                <p>Updated At: <code><%=@factor.updated_at%></code></p>
-            </div>
-        </div>
-    </div>
-
-    <div class="flex-column">
-        <div>
-            <form method="POST" action="/challenge_factor">
-                <div class='flex_column'>
-                    <% if @factor.type == 'sms' %>
-                    <div>
-                        <input type="text" id="sms_message" name="sms_message" class="text_input"
-                            placeholder="Custom SMS Message, include {{code}}">
-                    </div>
-                    <% end %>
-                    <div>
-                        <button type="submit" class="button">Challenge Factor</button>
-                    </div>
+                <div class="flex width-587px space-between">
+                  <div>
+                    <input
+                      type="text"
+                      class="text_input width-350px"
+                      id="sms_message"
+                      name="sms_message"
+                      class="text_input"
+                      placeholder="Custom SMS Message Input {{code}}"
+                    />
+                  </div>
+                  <div>
+                    <button type="submit" class="button width-175px">
+                      Challenge Factor
+                    </button>
+                  </div>
                 </div>
-            </form>
-
+                <% else %>
+                <div class="flex width-587px">
+                  <button type="submit" class="button width-175px">
+                    Challenge Factor
+                  </button>
+                </div>
+                <% end %>
+              </form>
+            </div>
+          </div>
         </div>
-    </div>
-</div>

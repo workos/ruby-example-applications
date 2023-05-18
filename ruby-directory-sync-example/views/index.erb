@@ -5,72 +5,47 @@
         <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 
     </head>
-<body >
-    <div class="logged_in_nav">
-        <div class="flex space-between width-100vw">
-            <div><p>Ruby Directory Sync Example App</p></div>
-            <div class="flex">
+    <body >
+        <div class='flex_column  height-70vh'>
+            <div class="flex width-70vw space-between">
                 <div>
-                    <a href="https://workos.com/docs" target="_blank"><button class='button nav-item'>Documentation</button></a>
+                    <h2>Select a Directory</h2>
                 </div>
                 <div>
-                    <a href="https://workos.com/docs/reference" target="_blank"><button class='button nav-item'>API
-                        Reference</button></a>
-                </div>
-                <div>
-                    <a href="https://workos.com/blog" target="_blank"><button
-                        class='button nav-item blog-nav-button'>Blog</button></a>
-                </div>
-                <div>
-                    <a href="https://workos.com/" target="_blank">
-                    <img src="<%= url("images/workos_favicon.png")%>" class="nav-image"  alt="link to workos.com logo">
-                    </a> 
+                    <a href="/webhooks" class="button button-outline">Test Webhooks</a>
                 </div>
             </div>
-            
-        </div>
-    </div>
-    <div class='flex_column  height-70vh'>
-        <div class="flex width-70vw space-between">
-            <div>
-                <h2>Select a Directory</h2>
-            </div>
-            <div>
-                <a href="/webhooks" class="button button-outline">Test Webhooks</a>
-            </div>
-        </div>
-            <div class='flex_column card width-65vw'>                
-                <div>
-                    <table class="width-65vw">
-                        <tr>
-                          <th>Directory</th>
-                          <th>ID</th>
-                          <th>View Settings</th>
-                        </tr>
-                        <% @directories.data.each do |i| %>    
-                          <tr>
-                            <td><%= i.name %></td>
-                            <td><%= i.id %></td>                
-                            <td><a class="button button-outline width-95" href="/directories/<%=i.id%>"><img src="<%= url("images/settings-2.svg")%>" class="icon" alt="workos logo"></a></td>
-                          </tr>
-                        <% end %>           
-                      </table>   
-                </div>                     
-                <div class="flex flex-end width-65vw">
-                    <% if @after %>
+                <div class='flex_column card width-65vw'>                
                     <div>
-                        <a href="?after=<%= @after %>"><button class="button page-title">Previous</button></a>
-                    </div>                        
-                    <% end %>
-                    <% if @before %>
-                    <div>
-                        <a href="?before=<%= @before %>"><button class="button page-title">Next</button></a>
-                    </div>                    
-                    <% end %>          
-                </div>    
+                        <table class="width-65vw">
+                            <tr>
+                            <th>Directory</th>
+                            <th>ID</th>
+                            <th>View Settings</th>
+                            </tr>
+                            <% @directories.data.each do |i| %>    
+                            <tr>
+                                <td><%= i.name %></td>
+                                <td><%= i.id %></td>                
+                                <td><a class="button button-outline width-95" href="/directories/<%=i.id%>"><img src="<%= url("images/settings-2.svg")%>" class="icon" alt="workos logo"></a></td>
+                            </tr>
+                            <% end %>           
+                        </table>   
+                    </div>                     
+                    <div class="flex flex-end width-65vw">
+                        <% if @after %>
+                        <div>
+                            <a href="?after=<%= @after %>"><button class="button page-title">Previous</button></a>
+                        </div>                        
+                        <% end %>
+                        <% if @before %>
+                        <div>
+                            <a href="?before=<%= @before %>"><button class="button page-title">Next</button></a>
+                        </div>                    
+                        <% end %>          
+                    </div>    
+                </div>
             </div>
         </div>
-    </div>
-</body>
-
+    </body>
 </html>

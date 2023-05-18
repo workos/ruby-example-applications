@@ -1,30 +1,46 @@
 <html>
-    <div class="logged_in_div_right">
-        <div class="flex_column">
-            <h2>Users</h2>
-            <div class="text_box">
-                <ul>
-                  <% @users.each do |user| %>
-                    <li>
-                      <a href="/users/<%= user.id %>">
-                        <%= user.username %>
-                      </a>
-                    </li>
-                  <% end %>
-                </ul>
-            </div>
-            <h2>Groups</h2>
-            <div class="text_box">
-              <ul>
-                <% @groups.each do |group| %>
-                  <li>
-                    <a href="/groups/<%= group.id %>">
-                      <%= group.name %>
-                    </a>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
-        </div> 
+  <div class="logged_in_div_right">
+    <div class="flex">
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr class="tr-header">
+              <th>Users</th>
+              <th>View Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr class="tr-data">
+                <td class="ta-left">
+                  <%= user.first_name %> <%= user.last_name %>
+                </td>
+                <td><a class="button button-outline width-95" href="/users/<%=user.id%>"><img src="<%= url("images/settings-2.svg")%>" class="icon" alt="workos logo"></a></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr class="tr-header">
+              <th>Groups</th>
+              <th>View Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @groups.each do |group| %>
+              <tr class="tr-data">
+                <td class="ta-left">
+                  <%= group.name %>
+                </td>
+                <td><a class="button button-outline width-95" href="/groups/<%=group.id%>"><img src="<%= url("images/settings-2.svg")%>" class="icon" alt="workos logo"></a></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
 </html>

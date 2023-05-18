@@ -42,14 +42,14 @@ get '/' do
   end
   @before = @directories.list_metadata["before"]
   @after = @directories.list_metadata["after"]
-  erb :index, :layout => false
+  erb :index, :layout => :layout
 end
 
 
 get '/directories/:id' do
-  @groups_list = WorkOS::DirectorySync.list_groups(directory: params[:id])
+  @groups_list = WorkOS::DirectorySync.list_groups(directory: params[:id], limit: 100)
   @groups = @groups_list.data
-  @users_list = WorkOS::DirectorySync.list_users(directory: params[:id])
+  @users_list = WorkOS::DirectorySync.list_users(directory: params[:id], limit: 100)
   @users = @users_list.data
 
   erb :directory

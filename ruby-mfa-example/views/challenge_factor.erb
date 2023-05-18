@@ -1,20 +1,51 @@
-
-<div class="flex_column">
-    <div class="flex-column">
-        <div>
-            <form method="POST" action='/verify_factor'>
-                <div class='flex_column'>
+<div class="flex-column">
+    <div>
+        <form method="POST" action="/verify_factor">
+            <div class='flex_column'>
+                <div class="flex form-wrap">
+                    <input type="text" id="code-1" name="code-1" maxlength="1"
+                        class="text_input code-input" placeholder="-">
+                    <input type="text" id="code-2" name="code-2" maxlength="1"
+                        class="text_input code-input" placeholder="-">
+                    <input type="text" id="code-3" name="code-3" maxlength="1"
+                        class="text_input code-input" placeholder="-">
+                    <input type="text" id="code-4" name="code-4" maxlength="1"
+                        class="text_input code-input" placeholder="-">
+                    <input type="text" id="code-5" name="code-5" maxlength="1"
+                        class="text_input code-input" placeholder="-">
+                    <input type="text" id="code-6" name="code-6" maxlength="1"
+                        class="text_input code-input" placeholder="-">
+                </div>
+                <div class="flex space-evenly width_25vw">
                     <div>
-                        <input type="text" id="code" name="code" class="text_input"
-                            placeholder="Input Auth Code">
+                        <button type="submit" class="button button-sm">Verify Factor</button>
                     </div>
                     <div>
-                        <button type="submit" class="button">Verify Factor</button>
+                        <a href="/"><button type="button" class='button button-sm'>Go Back
+                                Home</button></a>
                     </div>
                 </div>
-            </form>
-
-        </div>
+            </div>
+        </form>
     </div>
-
 </div>
+
+<script>
+    var container = document.getElementsByClassName("form-wrap")[0];
+    container.onkeyup = function (e) {
+        var target = e.srcElement;
+        var maxLength = parseInt(target.attributes["maxlength"].value, 10);
+        var myLength = target.value.length;
+        if (myLength >= maxLength) {
+            var next = target;
+            while (next = next.nextElementSibling) {
+                if (next == null)
+                    break;
+                if (next.tagName.toLowerCase() == "input") {
+                    next.focus();
+                    break;
+                }
+            }
+        }
+    }
+</script>
