@@ -204,7 +204,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    sorbet-runtime (0.5.10741)
+    sorbet-runtime (0.5.10841)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -246,7 +246,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    workos (2.12.0)
+    workos (2.13.0)
       sorbet-runtime (~> 0.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
@@ -280,7 +280,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
-  workos (= 2.12.0)
+  workos (= 2.13.0)
 
 RUBY VERSION
    ruby 2.7.2p137

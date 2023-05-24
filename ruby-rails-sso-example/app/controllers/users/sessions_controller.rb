@@ -5,20 +5,28 @@ class Users::SessionsController < Devise::SessionsController
   WorkOS.key = ENV['WORKOS_API_KEY']
   CLIENT_ID = ENV['WORKOS_CLIENT_ID']
 
-  # Set the Connection ID that you want to test
-  CONNECTION_ID = 'CHANGE TO YOUR CONNECTION'
+  # Set the Organization ID that you want to test
+  ORGANIZATION_ID = 'CHANGE TO YOUR ORGANIZATION'
 
   # GET /sso/new path to authenticate via WorkOS
   # You can also use connection or provider parameters
   # in place of the domain parameter
   # https://workos.com/docs/reference/sso/authorize/get
   def auth
-    authorization_url = WorkOS::SSO.authorization_url(
-      connection: CONNECTION_ID,
+    login_type = params[:login_method]
+    params = {
       client_id: CLIENT_ID,
       redirect_uri: ENV['WORKOS_REDIRECT_URI'],
-    )
-
+      state: ""
+    }
+  
+    if login_type == 'saml'
+      params[:organization] = ORGANIZATION_ID
+    else
+      params[:provider] = login_type
+    end
+  
+    authorization_url = WorkOS::SSO.authorization_url(**params)
     redirect_to authorization_url
   end
 
@@ -30,6 +38,7 @@ class Users::SessionsController < Devise::SessionsController
     )
     @user = User.from_sso(profile_and_token.profile)
     @user.save
+    puts User.all
     sign_in_and_redirect @user
   end
 
