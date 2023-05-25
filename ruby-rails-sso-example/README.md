@@ -33,11 +33,12 @@ You'll need to create an [Organization](https://dashboard.workos.com/organizatio
 
 Run `cp .env.example .env` and add your [API Key](https://dashboard.workos.com/api-keys) and [Client ID](https://dashboard.workos.com/configuration). The `workos` gem will read your API key from the ENV variable `WORKOS_API_KEY` and your Client ID from the ENV variable `WORKOS_CLIENT_ID`. You may also set the API key and Client ID yourself by adding `WorkOS.key = $YOUR_API_KEY` and `CLIENT_ID = $YOUR_CLIENT_ID` to `sessions_controller.rb`.
 
-Additionally, you'll want to set the `CONNECTION_ID` in the `sessions_controller.rb` for the Connection you are testing.
+Additionally, you'll want to set the `ORGANIZATION_ID` in the `sessions_controller.rb` for the Connection you are testing.
 
 ## Run the application and sign in using SSO
 
 Start the server:
+
 ```bash
 foreman start -f Procfile.dev
 ```

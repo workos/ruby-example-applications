@@ -1,7 +1,7 @@
 <div class="logged_in_nav">
   <div class="flex">
       <div>
-        <%= image_tag("workos_full_logo.png", :alt => "WorkOS Logo") %>      </div>
+        <%= image_tag("workos-logo-with-text.png", :alt => "WorkOS Logo") %>      </div>
   </div>
   <div>
       <a href="https://workos.com/docs" target="_blank"><button class='button nav-item'>Documentation</button></a>
@@ -13,31 +13,15 @@
   </div>
   </div>
     <div class='flex'>
-        <div class="logged_in_div_left">
-            <div class="title-text">
-                <h1>Your app,</h1>
-                <h2 class="home-hero-gradient">Enterprise Ready</h2>
-            </div>
-            <div class="title-subtext">
-                <p>Start selling to enterprise customers with just a few lines of code.</p>
-                <p>Implement features like single sign-on in minutes instead of months.</p>
-            </div>
-            <div class="flex success-buttons">
-                <a href="https://workos.com/signup" target="_blank"><button class='button'>Get Started</button></a>
-                <a href="mailto:sales@workos.com?subject=WorkOS Sales Inquiry" target="_blank"><button
-                        class='button button-outline sales-button'>Contact
-                        Sales</button></a>
-            </div>
-        </div>
         <div class="logged_in_div_right">
 <div class="container mt-5">
    <div class="col-md-10 ml-auto col-xl-6 mr-auto">
       <!-- Tabs with Background on Card -->
-      <div class="card">
+      <div class="card cw-425">
         <div class="card-header">
           <ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist" data-background-color="orange">
             <li class="tab-item ">
-              <a class="nav-link active" data-toggle="tab" href="#home1" role="tab">Username And Password</a>
+              <a class="nav-link active" data-toggle="tab" href="#home1" role="tab">Password</a>
             </li>
             <li class="tab-item">
               <a class="nav-link" data-toggle="tab" href="#profile1" role="tab">SSO</a>
@@ -65,19 +49,23 @@
                     <%= f.label :remember_me %>
                 </div>
                 <% end %>
-
-                <div class="actions">
-                <%= f.submit "Log in", class: 'button login_button' %>
-                </div>
              <% end %>
             <hr>
             <%= render "users/shared/links" %>
             </div>           
             <div class="tab-pane" id="profile1" role="tabpanel">
                 <%= form_with url: sso_new_path, method: :get, local: true do |f| %>
-                    <div class="actions">
-                    <%= f.submit "Sign in with SSO", class: 'button' %>
-                    </div>
+            
+                    <hr style="width:100%; margin-top: 15px; margin-bottom: 20px;">                    
+                    <button id="Google" name="login_method" value="GoogleOAuth" class="card login_button google_button">
+                        <span>Google OAuth</span>
+                    </button>
+                    <button id="Microsoft" name="login_method" value="MicrosoftOAuth" class="card login_button microsoft_button">
+                        <span>Microsoft OAuth</span>
+                    </button>
+                    <button id="SAML" name="login_method" value="saml" class="card login_button saml_button mb-0">
+                        <span>Enterprise SAML</span>
+                    </button>
                  <% end %>
                 </div>    
             </div>

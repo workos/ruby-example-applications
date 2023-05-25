@@ -1,7 +1,7 @@
 body {
   font-family: Inter, sans-serif;
   background-color: #f9f9fb;
-
+  min-width: 739px;
 }
 
 .container_login {
@@ -27,6 +27,7 @@ body {
 .flex {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .flex_column {
@@ -36,8 +37,8 @@ body {
   align-items: center;
 }
 
-.space-between {
-  justify-content: space-between;
+.m-top-20 {
+  margin-top: 20px;
 }
 
 .width-75 {
@@ -46,6 +47,41 @@ body {
 
 .width-40vw {
   width: 40vw;
+}
+.width-25vw {
+  width: 25vw;
+}
+
+.width-18vw {
+  width: 18vw;
+}
+
+.width-941px {
+  width: 941px;
+}
+
+.width-335 {
+  width: 335px;
+}
+
+.height-315 {
+  height: 315px;
+}
+
+.height-40vh {
+  height: 40vw;
+}
+
+.height-80vh {
+  height: 80vh;
+}
+
+.height-100vh {
+  height: 100vh;
+}
+
+.space-between {
+  justify-content: space-between;
 }
 
 .container_success {
@@ -57,7 +93,58 @@ body {
 }
 
 .heading_div {
-  margin: 25px 0px 25px 0px;
+  margin: 35px 0px 0px 0px;
+}
+
+.text_input {
+  border: 1px solid #555555;
+  border-radius: 10px;
+  margin: 10px 0px 7px 0px;
+  padding: 5px;
+  height: 35px;
+  width: 18vw;
+  text-align: center;
+}
+
+.code-input {
+  width: 75px;
+  height: 100px;
+  margin: 0px 5px 30px 5px;
+  font-size: 60px;
+  color: darkslategray;
+}
+
+.qr_div {
+  align-self: center;
+  margin-top: 45px;
+}
+
+.qr_code {
+  width: 7vw;
+  max-width: 100px;
+}
+
+.factor_card {
+  border: 1px solid #555555;
+  border-radius: 10px;
+  width: 20vw;
+  margin: 0px 15px 0px 15px;
+  padding: 25px;
+}
+
+.card {
+  border: 1px solid #555555;
+  border-radius: 10px;
+  margin: 0px 15px 0px 15px;
+  padding: 25px 50px;
+  margin-bottom: 20px;
+}
+
+.profile_card {
+  width: 40vw;
+  overflow: scroll;
+  background: white;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 }
 
 .heading_text_div {
@@ -76,7 +163,7 @@ body {
 .button {
   background-color: #6363f1;
   border: 2px solid #6363f1;
-  border-radius: 26px;
+  border-radius: 10px;
   color: white;
   padding: 8px 16px;
   text-align: center;
@@ -92,6 +179,9 @@ body {
 .button-outline {
   background-color: #f9f9fb;
   color: #6363f1;
+  padding: 8px 16px;
+}
+.button-sm {
   padding: 8px 16px;
 }
 
@@ -115,6 +205,17 @@ h2,
 h1 {
   text-align: center;
   color: #555555;
+}
+
+.login_button {
+  width: 100%;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+.login_button:hover {
+  border-color: #6363f1;
+  color: #292929;
 }
 
 .logged_in_div_right {
@@ -449,6 +550,7 @@ body {
     position: relative;
     width: 100%;
     margin-bottom: 30px;
+    flex-direction: row;
     box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
 }
 
@@ -569,4 +671,48 @@ footer p a:hover{
   border-radius: 5px;
 }
 
+.workos-logo {
+  position: relative;
+  top: 38px;
+  padding-right: 25px;
+  height: 75px !important;
+}
+.webhooks_container {
+  width: 45vw;
+  padding: 25px;
+  max-height: 450px;
+  overflow-y: scroll;
+}
+.mb-0 {
+  margin-bottom: 0px;
+}
+.mb-20 {
+  margin-bottom: 20px;
+}
+.google_button {
+  background-image: url("google-button.png");
+  background-size: cover;
+}
+.microsoft_button {
+  background-image: url("microsoft-button.png");
+  background-size: cover;
+}
+.saml_button {
+  background-image: url("saml-button.png");
+  background-size: cover;
+}
+.error_message {
+  color: #6363f1;
+  margin-top: 0px;
+  font-size: 12px;
+}
+#noborder {
+  border: none;
+}
+#noborder > :first-child {
+  display: none;
+}
 
+.cw-425 {
+  width:425px;
+}
