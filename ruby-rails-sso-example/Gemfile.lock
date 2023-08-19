@@ -139,14 +139,14 @@ GEM
       timeout
     net-smtp (0.3.3)
       net-protocol
-    nio4r (2.5.8)
+    nio4r (2.5.9)
     nokogiri (1.14.2)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     popper_js (2.11.6)
     public_suffix (5.0.1)
-    puma (4.3.12)
+    puma (5.6.7)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.4)
@@ -267,7 +267,7 @@ DEPENDENCIES
   json (>= 2.3.0)
   listen (~> 3.2)
   net-http
-  puma (~> 4.3)
+  puma (~> 5.6)
   rails (~> 7.0.1)
   sass-rails (>= 6)
   selenium-webdriver
